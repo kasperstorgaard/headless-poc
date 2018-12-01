@@ -4,18 +4,22 @@
   "description": "Basic express server side rendered application.",
   "main": "dist/index.js",
   "scripts": {
-    "dev:build": "tsc src/index.ts --outFile dist/index.js --watch",
+    "dev:build": "tsc --watch",
     "dev:start": "nodemon dist/index.js",
-    "dev": "npm-run-all --parallel dev:build dev:start",
-    "prod:build": "tsc src/index.ts --outFile dist/index.js",
+    "dev:views": "cpx \"src/views/**/*.pug\" dist/views --watch",
+    "dev": "npm-run-all --parallel dev:*",
+    "prod:views": "cpx src/views/**/*.pug dist/views",
+    "prod:build": "tsc",
     "prod:start": "node dist/index.js",
-    "start": "npm-run-all --sequential prod:build prod:start",
+    "start": "npm-run-all --sequential prod:views prod:build prod:start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "types": "node ./update-types.js"
   },
   "author": "kasperstorgaard",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.16.0",
+    "cpx": "^1.5.0",
     "kentico-cloud-model-generator-utility": "^1.2.0",
     "nodemon": "^1.18.7",
     "npm-run-all": "^4.1.5",
@@ -23,7 +27,9 @@
     "typescript": "^3.2.1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "kentico-cloud-delivery": "^5.1.1",
+    "pug": "^2.0.3",
     "rxjs": "^6.3.3"
   }
 }
