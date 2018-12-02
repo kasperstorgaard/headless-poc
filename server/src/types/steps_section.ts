@@ -7,23 +7,19 @@ import { ContentItem, Fields } from 'kentico-cloud-delivery';
  * Note: You can substitute 'ContentItem' type with another generated class. Generator doesn't have this information available
  * and so its up to you to define relationship between models.
  */
-export class HeroSection extends ContentItem {
-    public backgroundImage: Fields.AssetsField;
+export class StepsSection extends ContentItem {
+    public ctaLink: ContentItem[];
     public ctaText: Fields.TextField;
     public headline: Fields.TextField;
-    public body: Fields.TextField;
-    public ctaLink: ContentItem[];
+    public steps: ContentItem[];
     constructor() {
         super({
             propertyResolver: ((fieldName: string) => {
-                if (fieldName === 'background_image') {
-                    return 'backgroundImage';
+                if (fieldName === 'cta_link') {
+                    return 'ctaLink';
                 }
                 if (fieldName === 'cta_text') {
                     return 'ctaText';
-                }
-                if (fieldName === 'cta_link') {
-                    return 'ctaLink';
                 }
                 return fieldName;
             })

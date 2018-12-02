@@ -7,6 +7,8 @@ import { ContentItem, Fields } from 'kentico-cloud-delivery';
  * Note: You can substitute 'ContentItem' type with another generated class. Generator doesn't have this information available
  * and so its up to you to define relationship between models.
  */
-export class Frontpage extends ContentItem {
-    public sections: ContentItem[];
+export class Step extends ContentItem {
+    public image: Fields.AssetsField;
+    public headline: Fields.TextField;
+    public description: Fields.TextField;
 }
