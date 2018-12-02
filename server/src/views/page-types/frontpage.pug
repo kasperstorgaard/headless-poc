@@ -1,7 +1,5 @@
 extends ../index
 
 block main
-  section.layout-hero(style={'background-image': 'url('+ heroImage.value[0].url +')'})
-    h1.layout-hero-headline #{heroHeadline.value}
-    p #{heroDescription.value}
-    a.sif-button #{heroCtaText.value}
+  each section in sections
+    include ../partials/sections/hero-section
