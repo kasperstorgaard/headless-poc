@@ -15,6 +15,6 @@ export const client = new DeliveryClient({
       new TypeResolver('frontpage', () => new Frontpage()),
       new TypeResolver('hero_section', () => new HeroSection()),
       new TypeResolver('step', () => new Step()),
-      new TypeResolver('step_section', () => new StepsSection()),
+      new TypeResolver('steps_section', () => new StepsSection()),
   ]
 });
