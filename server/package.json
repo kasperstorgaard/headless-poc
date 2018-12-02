@@ -6,12 +6,14 @@
   "scripts": {
     "dev:build": "tsc --watch",
     "dev:start": "nodemon dist/index.js",
+    "dev:styles": "cpx \"../client/dist/**/*.css\" ./dist/static --watch",
     "dev:views": "cpx \"src/views/**/*.pug\" dist/views --watch",
     "dev": "npm-run-all --parallel dev:*",
     "prod:views": "cpx src/views/**/*.pug dist/views",
+    "prod:styles": "cpx \"../client/dist/**/*.css\" dist/",
     "prod:build": "tsc",
     "prod:start": "node dist/index.js",
-    "start": "npm-run-all --sequential prod:views prod:build prod:start",
+    "start": "npm-run-all --sequential prod:*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "types": "node ./update-types.js"
   },
