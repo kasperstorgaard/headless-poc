@@ -1,0 +1,10 @@
+section.sif-section
+  h2.sif-section-headline #{section.headline.value}
+  ul.sif-steps-list
+    each step in section.steps
+      li.sif-steps-list-item
+        img.sif-steps-list-image(src=step.image.value[0].url)
+        div.sif-steps-list-body
+          h3.sif-steps-list-headline #{step.headline.value}
+          p.sif-steps-list-text #{step.description.value}
+

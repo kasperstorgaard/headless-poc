@@ -1,0 +1,25 @@
+/* .sif-steps-list {} */
+
+.sif-steps-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.sif-steps-list-image {
+  margin-right: 1.5em;
+  width: 67px;
+  height: 67px;
+}
+
+.sif-steps-list-headline,
+.sif-steps-list-text {
+  margin: 0;
+  padding: 0;
+}
+
+.sif-steps-list-headline {
+  font-weight: 700;
+  line-height: 1.5em;
+  font-size: 1em;
+}

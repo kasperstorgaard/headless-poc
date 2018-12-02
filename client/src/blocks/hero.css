@@ -1,4 +1,4 @@
-.layout-hero {
+.sif-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,11 +10,11 @@
   background-size: cover;
 }
 
-.layout-hero > * {
+.sif-hero > * {
   max-width: 270px;
 }
 
-.layout-hero-headline {
+.sif-hero-headline {
   font-weight: 700;
   margin: 0;
 }
