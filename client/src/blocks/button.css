@@ -1,0 +1,17 @@
+a.sif-button {
+  border: 1px solid #3fa435;
+  color: white;
+  background: #3fa435;
+  padding: 0;
+  font-weight: 600;
+  text-decoration: none !important;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-transform: uppercase;
+  text-align: center;
+  min-width: 12.5em;
+  height: 40px;
+  line-height: 40px;
+}

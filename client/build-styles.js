@@ -16,8 +16,7 @@ const processor = postcss().use(atImport());
 
 const watch = argv.watch || argv.w;
 
-const styles = ['src/styles/index.css'];
-
+const styles = 'src/@(styles|blocks)/**/*.css';
 
 if (watch) {
   chokidar.watch(styles)
