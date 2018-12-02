@@ -2,4 +2,8 @@ extends ../index
 
 block main
   each section in sections
-    include ../partials/sections/hero-section
+    case section.system.type
+      when 'hero_section'
+        include ../partials/sections/hero-section
+      when 'steps_section'
+        include ../partials/sections/steps-section

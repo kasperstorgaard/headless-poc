@@ -4,8 +4,8 @@ import {Frontpage} from '../../types/frontpage';
 import {client} from '../../cms-client';
 
 export default function getFrontpage() {
-  return client.items<Frontpage>()
-    .type('frontpage')
+  return client.item<Frontpage>('frontpage')
+    .depthParameter(3)
     .getObservable()
-    .pipe(map(response => response.items[0]));
+    .pipe(map(response => response.item));
 }
