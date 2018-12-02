@@ -5,7 +5,7 @@ import {client} from '../../cms-client';
 
 export default function getFrontpage() {
   return client.item<Frontpage>('frontpage')
-    .depthParameter(3)
+    .depthParameter(2)
     .getObservable()
     .pipe(map(response => response.item));
 }
