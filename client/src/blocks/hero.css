@@ -1,9 +1,4 @@
 .sif-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2em 1.5em;
-  max-width: 1048px;
   min-height: 30em;
   text-align: center;
   background-position: center;
