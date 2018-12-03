@@ -1,7 +1,7 @@
 extends ../index
 
 block main
-  each section in sections
+  each section in page.sections
     case section.system.type
       when 'hero_section'
         include ../partials/sections/hero-section

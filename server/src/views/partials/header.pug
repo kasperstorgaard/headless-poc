@@ -1,1 +1,4 @@
 header
+  nav
+    each navItem in navigation
+      a(href=navItem.url) #{navItem.name}

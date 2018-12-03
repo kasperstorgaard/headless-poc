@@ -1,11 +1,13 @@
+
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
-import {HeroSection} from './hero_section';
-import {StepsSection} from './steps_section';
+import {ProductPage} from './product_page';
 
-export class Frontpage extends ContentItem {
-    public sections: HeroSection|StepsSection[];
+export class ProductsPage extends ContentItem {
+    public url: Fields.UrlSlugField;
+    public products: ProductPage[];
     public navigationTitle: Fields.TextField;
+    public headline: Fields.TextField;
     constructor() {
         super({
             propertyResolver: ((fieldName: string) => {
