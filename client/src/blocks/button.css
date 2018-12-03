@@ -1,17 +1,20 @@
 a.sif-button {
-  border: 1px solid #3fa435;
-  color: white;
-  background: #3fa435;
+  border: 1px solid var(--color-brand);
+  color: var(--color-brand);
+  background: transparent;
   padding: 0;
   font-weight: 600;
-  text-decoration: none !important;
-  overflow: hidden;
-  position: relative;
+  text-decoration: none;
   display: inline-block;
-  vertical-align: middle;
   text-transform: uppercase;
   text-align: center;
   min-width: 12.5em;
   height: 40px;
   line-height: 40px;
+}
+
+.theme-secondary .sif-button {
+  border: 1px solid var(--color-brand);
+  color: var(--color-light);
+  background: var(--color-brand);
 }
