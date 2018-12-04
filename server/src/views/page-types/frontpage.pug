@@ -3,7 +3,7 @@ extends ../index
 block main
   each section in page.sections
     case section.system.type
-      when 'hero_section'
+      when 'promo'
         include ../partials/sections/hero-section
       when 'steps_section'
         include ../partials/sections/steps-section

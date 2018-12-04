@@ -5,22 +5,24 @@ import {
 
 import project from '../../secret/project.json';
 import {
-  ProductsPage,
+  ProductGroup,
   Frontpage,
   HeroSection,
   Step,
   StepsSection,
-  ProductPage
+  Product,
+  Promo
 } from '../types';
 
 export const client = new DeliveryClient({
   projectId: project.key,
   typeResolvers: [
-      new TypeResolver('frontpage', () => new Frontpage()),
-      new TypeResolver('hero_section', () => new HeroSection()),
-      new TypeResolver('step', () => new Step()),
-      new TypeResolver('steps_section', () => new StepsSection()),
-      new TypeResolver('products_page', () => new ProductsPage()),
-      new TypeResolver('product_page', () => new ProductPage()),
-  ]
+    Frontpage,
+    HeroSection,
+    Step,
+    StepsSection,
+    ProductGroup,
+    Product,
+    Promo
+  ].map(T => new TypeResolver(T.codename, () => new T()))
 });

@@ -1,6 +1,6 @@
 import {map} from 'rxjs/operators';
 
-import {Frontpage} from '../../types/frontpage';
+import {Frontpage} from '../../types/models';
 import {client} from '../cms-client';
 
 export default function getFrontpage() {

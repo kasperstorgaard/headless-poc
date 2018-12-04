@@ -1,7 +1,7 @@
 import {forkJoin, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {ProductsPage, Frontpage, Page} from '../types';
+import {ProductGroup, Frontpage, Page} from '../types';
 import getFrontpage from './pages/frontpage';
 import getProductsPage from './pages/products-page';
 
@@ -26,7 +26,7 @@ export function getNavigation(): Observable<NavigationItem[]> {
 }
 
 function buildNavigationItem(page: Page): NavigationItem {
-  const name = page.navigationTitle ? page.navigationTitle.text : '';
+  const name = page.name ? page.name.text : '';
   let url = '';
   let items: NavigationItem[] = [];
 
@@ -39,7 +39,7 @@ function buildNavigationItem(page: Page): NavigationItem {
 }
 
 function getSubPages(page: Page) {
-  if (page instanceof ProductsPage) {
+  if (page instanceof ProductGroup) {
     return page.products;
   }
 
