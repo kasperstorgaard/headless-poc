@@ -6,7 +6,7 @@ import {
 import project from '../../secret/project.json';
 import {
   ProductGroup,
-  Frontpage,
+  Home,
   HeroSection,
   Step,
   StepsSection,
@@ -17,7 +17,7 @@ import {
 export const client = new DeliveryClient({
   projectId: project.key,
   typeResolvers: [
-    Frontpage,
+    Home,
     HeroSection,
     Step,
     StepsSection,

@@ -1,9 +1,9 @@
 import {forkJoin, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {ProductGroup, Frontpage, Page} from '../types';
-import getFrontpage from './pages/frontpage';
-import getProductsPage from './pages/products-page';
+import {ProductGroup, Home, Page} from '../types';
+import getHomePage from './pages/home';
+import getProductsPage from './pages/products';
 
 export interface NavigationItem {
   name: string;
@@ -16,7 +16,7 @@ let navigation$: Observable<NavigationItem[]>;
 export function getNavigation(): Observable<NavigationItem[]> {
   if (!navigation$) {
     navigation$ = forkJoin([
-      getFrontpage(),
+      getHomePage(),
       getProductsPage()
     ])
     .pipe(map(pages => pages.map(page => buildNavigationItem(page))));
@@ -27,10 +27,10 @@ export function getNavigation(): Observable<NavigationItem[]> {
 
 function buildNavigationItem(page: Page): NavigationItem {
   const name = page.name ? page.name.text : '';
-  let url = '';
+  let url = '/';
   let items: NavigationItem[] = [];
 
-  if (!(page instanceof Frontpage)) {
+  if (!(page instanceof Home)) {
     url = page.url.value;
     items = getSubPages(page).map(subPage => buildNavigationItem(subPage));
   }

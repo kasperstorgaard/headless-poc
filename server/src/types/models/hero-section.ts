@@ -1,5 +1,7 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
+import { Page } from './page';
+
 export class HeroSection extends ContentItem {
     public static codename = 'hero_section';
 
@@ -7,7 +9,7 @@ export class HeroSection extends ContentItem {
     public ctaText: Fields.TextField;
     public headline: Fields.TextField;
     public body: Fields.TextField;
-    public ctaLink: ContentItem[];
+    public ctaLink: Page[];
     constructor() {
         super({
             propertyResolver: ((fieldName: string) => {

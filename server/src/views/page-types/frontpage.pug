@@ -1,9 +1,0 @@
-extends ../index
-
-block main
-  each section in page.sections
-    case section.system.type
-      when 'promo'
-        include ../partials/sections/hero-section
-      when 'steps_section'
-        include ../partials/sections/steps-section

@@ -1,5 +1,5 @@
-export * from './frontpage';
 export * from './hero-section';
+export * from './home';
 export * from './product';
 export * from './product-group';
 export * from './promo';
