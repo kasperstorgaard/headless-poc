@@ -1,6 +1,6 @@
 import express from 'express';
 import getHomePage from './api/pages/home';
-import {getNavigation} from './api/navigation';
+import {getNavigation, getUrlSegments} from './api/navigation';
 import { forkJoin } from 'rxjs';
 import getProductsPage from './api/pages/products';
 
@@ -12,6 +12,9 @@ router.get('/', async (_req, res) => {
 });
 
 router.get('/products', async (_req, res) => {
-    const [page, navigation]  = await forkJoin(getProductsPage(), getNavigation()).toPromise();
+    const [page, navigation]  = await forkJoin(
+        getProductsPage(),
+        getNavigation(),
+    ).toPromise();
     res.render('page-types/products', {page, navigation});
 });

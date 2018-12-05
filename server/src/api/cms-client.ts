@@ -10,7 +10,7 @@ import {
   HeroSection,
   Step,
   StepsSection,
-  Product,
+  PickABox,
   Promo
 } from '../types';
 
@@ -22,7 +22,7 @@ export const client = new DeliveryClient({
     Step,
     StepsSection,
     ProductGroup,
-    Product,
+    PickABox,
     Promo
   ].map(T => new TypeResolver(T.codename, () => new T()))
 });

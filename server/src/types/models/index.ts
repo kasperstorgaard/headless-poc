@@ -1,6 +1,6 @@
 export * from './hero-section';
 export * from './home';
-export * from './product';
+export * from './pick-a-box';
 export * from './product-group';
 export * from './promo';
 export * from './step';

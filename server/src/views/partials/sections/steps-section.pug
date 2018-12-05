@@ -3,9 +3,9 @@ section.sif-section
   ul.sif-steps-list
     each step in section.steps
       li.sif-steps-list-item
-        img.sif-steps-list-image(src=step.image.value[0].url)
+        img.sif-steps-list-image(src=step.illustrationThumbnail.value[0].url)
         div.sif-steps-list-body
           h3.sif-steps-list-headline #{step.headline.value}
-          p.sif-steps-list-text #{step.description.value}
-  a.sif-button #{section.ctaText.value}
+          p.sif-steps-list-text #{step.summary.value}
+  a.sif-button(url=section.fullUrl) #{section.ctaText.value}
 

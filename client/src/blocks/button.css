@@ -13,6 +13,11 @@ a.sif-button {
   line-height: 40px;
 }
 
+.sif-button:hover,
+.sif-button:active {
+  cursor: pointer;
+}
+
 .theme-secondary .sif-button {
   border: 1px solid var(--color-brand);
   color: var(--color-light);

@@ -1,14 +1,14 @@
-import {map, shareReplay, catchError} from 'rxjs/operators';
+import {map, shareReplay} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 import {ProductGroup} from '../../types';
 import {client} from '../cms-client';
 
-let item: Observable<ProductGroup>;
+let item$: Observable<ProductGroup>;
 
 export default function getProductsPage() {
-  if (!item) {
-    item = client.item<ProductGroup>('products')
+  if (!item$) {
+    item$ = client.item<ProductGroup>('products')
       .depthParameter(2)
       .getObservable()
       .pipe(
@@ -17,5 +17,5 @@ export default function getProductsPage() {
       );
   }
 
-  return item;
+  return item$;
 }

@@ -1,5 +1,5 @@
-import { Home } from './frontpage';
+import { Home } from './home';
 import { ProductGroup } from './product-group';
-import { Product } from './product';
+import { PickABox } from './pick-a-box';
 
-export type Page = Home | ProductGroup | Product;
+export type Page = Home | ProductGroup | PickABox;
