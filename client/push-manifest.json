@@ -4,7 +4,7 @@
       "type": "script",
       "weight": 1
     },
-    "dist/components/my-view1.js": {
+    "dist/components/page1.js": {
       "type": "script",
       "weight": 1
     },
@@ -13,12 +13,12 @@
       "weight": 1
     }
   },
-  "/view1": {
+  "/page1": {
     "dist/components/app.js": {
       "type": "script",
       "weight": 1
     },
-    "dist/components/my-view1.js": {
+    "dist/components/page1.js": {
       "type": "script",
       "weight": 1
     },
@@ -27,12 +27,12 @@
       "weight": 1
     }
   },
-  "/view2": {
+  "/page2": {
     "dist/components/my-app.js": {
       "type": "script",
       "weight": 1
     },
-    "dist/components/my-view2.js": {
+    "dist/components/page2.js": {
       "type": "script",
       "weight": 1
     },
@@ -41,12 +41,12 @@
       "weight": 1
     }
   },
-  "/view3": {
+  "/page3": {
     "dist/components/my-app.js": {
       "type": "script",
       "weight": 1
     },
-    "dist/components/my-view3.js": {
+    "dist/components/page3.js": {
       "type": "script",
       "weight": 1
     },

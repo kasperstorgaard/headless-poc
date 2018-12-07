@@ -1,10 +1,10 @@
 import { html } from '@polymer/lit-element';
-import { PageViewElement } from './page-view-element';
+import { PageViewElement } from '../shared/page-view-element';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles';
+import { SharedStyles } from '../shared/shared-styles';
 
-class MyView404 extends PageViewElement {
+class Page404 extends PageViewElement {
   protected render() {
     return html`
       ${SharedStyles}
@@ -18,4 +18,4 @@ class MyView404 extends PageViewElement {
   }
 }
 
-window.customElements.define('my-view404', MyView404);
+window.customElements.define('sif-404', Page404);

@@ -3,9 +3,9 @@ import { html, property } from '@polymer/lit-element';
 import { connect } from 'pwa-helpers/connect-mixin';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../store';
+import { store, RootState } from '../../store';
 
-import { PageViewElement } from './page-view-element';
+import { PageViewElement } from '../shared/page-view-element';
 
 // We are lazy loading its reducer.
 // store.addReducers({
@@ -13,10 +13,10 @@ import { PageViewElement } from './page-view-element';
 // });
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles';
-import { addToCartIcon } from './my-icons';
+import { SharedStyles } from '../shared/shared-styles';
+import { addToCartIcon } from '../shared/icons';
 
-class MyView3 extends connect(store)(PageViewElement) {
+class Page3 extends connect(store)(PageViewElement) {
   protected render() {
     return html`
       ${SharedStyles}
@@ -91,4 +91,4 @@ class MyView3 extends connect(store)(PageViewElement) {
   }
 }
 
-window.customElements.define('my-view3', MyView3);
+window.customElements.define('sif-page3', Page3);

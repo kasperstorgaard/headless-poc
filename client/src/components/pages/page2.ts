@@ -1,19 +1,19 @@
 import { html, property } from '@polymer/lit-element';
 import { connect } from 'pwa-helpers/connect-mixin';
 
-import { PageViewElement } from './page-view-element';
+import { PageViewElement } from '../shared/page-view-element';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../store';
+import { store, RootState } from '../../store';
 
 // store.addReducers({
 //   counter
 // });
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from './shared-styles';
+import { SharedStyles } from '../shared/shared-styles';
 
-class MyView2 extends connect(store)(PageViewElement) {
+class Page2 extends connect(store)(PageViewElement) {
   protected render() {
     return html`
       ${SharedStyles}
@@ -61,4 +61,4 @@ class MyView2 extends connect(store)(PageViewElement) {
   }
 }
 
-window.customElements.define('my-view2', MyView2);
+window.customElements.define('sif-page2', Page2);

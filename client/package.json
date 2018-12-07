@@ -7,7 +7,7 @@
     "build": "run-s clean && run-p prod:*",
     "clean": "rimraf ./dist && mkdirp public/js",
     "dev:styles": "node ./build-styles --watch",
-    "dev:js": "NODE_ENV='development' webpack --single-run=false",
+    "dev:js": "NODE_ENV='development' webpack --watch",
     "dev": "run-s clean && run-p dev:*",
     "prod:js": "NODE_ENV='production' rollup -c",
     "prod:styles": "node ./build-styles",

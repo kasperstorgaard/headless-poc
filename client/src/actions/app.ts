@@ -1,13 +1,3 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import { Action, ActionCreator } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
@@ -29,7 +19,7 @@ type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
 export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch) => {
   // Extract the page name from path.
-  const page = path === '/' ? 'view1' : path.slice(1);
+  const page = path === '/' ? 'page1' : path.slice(1);
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
@@ -41,21 +31,21 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
 
 const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
   switch(page) {
-    case 'view1':
-      import('../components/my-view1').then(() => {
+    case 'page1':
+      import('../components/pages/page1').then(() => {
         // Put code in here that you want to run every time when
-        // navigating to view1 after my-view1.js is loaded.
+        // navigating to page1 after page1.js is loaded.
       });
       break;
-    case 'view2':
-      import('../components/my-view2');
+    case 'page2':
+      import('../components/pages/page2');
       break;
-    case 'view3':
-      import('../components/my-view3');
+    case 'page3':
+      import('../components/pages/page3');
       break;
     default:
-      page = 'view404';
-      import('../components/my-view404');
+      page = 'page404';
+      import('../components/pages/page-404');
   }
 
   dispatch(updatePage(page));

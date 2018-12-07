@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     main: './src/components/app.ts'
   },
+  mode: 'development',
   devtool: 'inline-source-map',
   module: {
     rules: [
