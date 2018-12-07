@@ -1,0 +1,58 @@
+{
+  "/": {
+    "dist/components/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "dist/components/my-view1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view1": {
+    "dist/components/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "dist/components/my-view1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view2": {
+    "dist/components/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "dist/components/my-view2.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+  "/view3": {
+    "dist/components/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "dist/components/my-view3.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
+  }
+}
