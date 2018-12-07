@@ -20,6 +20,13 @@ import { menuIcon } from '../../shared/icons';
 
 class Header extends connect(store)(LitElement) {
   protected render() {
+    const nav = (className) => html`
+    <nav class="${className}">
+      <a ?selected="${this._page === 'page1'}" href="/page1">page One</a>
+      <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
+      <a ?selected="${this._page === 'page3'}" href="/page3">page Three</a>
+    </nav>`;
+
     // Anything that's related to rendering should be done in here.
     return html`
     <link rel="stylesheet" href="components/partials/header/header.css">
@@ -32,21 +39,13 @@ class Header extends connect(store)(LitElement) {
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
-      <nav class="toolbar-list">
-        <a ?selected="${this._page === 'page1'}" href="/page1">page One</a>
-        <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
-        <a ?selected="${this._page === 'page3'}" href="/page3">page Three</a>
-      </nav>
+      ${nav('toolbar-list')}
     </app-header>
  
     <!-- Drawer content -->
     <app-drawer .opened="${this._drawerOpened}"
         @opened-changed="${this._drawerOpenedChanged}">
-      <nav class="drawer-list">
-        <a ?selected="${this._page === 'page1'}" href="/page1">page One</a>
-        <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
-        <a ?selected="${this._page === 'page3'}" href="/page3">page Three</a>
-      </nav>
+      ${nav('drawer-list')}
     </app-drawer>`;
   }
 
