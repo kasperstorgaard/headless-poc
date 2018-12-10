@@ -15,7 +15,9 @@ const argStr = Object.keys(args).reduce((str, key) => str + ` --${key}=${args[ke
 
 exec([
   'cd src/types', 
-  `node ../../node_modules/.bin/kc-generate ${argStr}`
+  'mkdir imported', 
+  'cd imported', 
+  `node ../../../node_modules/.bin/kc-generate ${argStr}`
 ].join(' && '), () => {
   console.log('done!');
 });
