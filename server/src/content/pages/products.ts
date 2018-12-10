@@ -1,11 +1,11 @@
 import {map} from 'rxjs/operators';
 
-import {ProductGroup} from '../models';
 import {client} from '../cms-client';
+import {ProductGroupItem} from '../resolvers';
 
 export default function getProductsPage() {
-  return client.item<ProductGroup>('products')
+  return client.item<ProductGroupItem>('products')
     .depthParameter(2)
     .getObservable()
-    .pipe( map(response => response.item));
+    .pipe(map(response => response.item.toJSON()));
 }

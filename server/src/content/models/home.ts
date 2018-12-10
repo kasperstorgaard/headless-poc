@@ -1,11 +1,8 @@
-import {ContentItem, Fields, ILinkResolverContext, Link} from 'kentico-cloud-delivery';
-
-import {HeroSection} from './hero-section';
+import {PromoSection} from './promo-section';
 import {StepsSection} from './steps-section';
 
-export class Home extends ContentItem {
-    public static type = 'home';
+export type HomeSection = PromoSection|StepsSection;
 
-    public sections: (HeroSection|StepsSection)[];
-    public name: Fields.TextField;
+export interface Home {
+  sections: (PromoSection|StepsSection)[];
 }

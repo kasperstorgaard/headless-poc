@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import {client} from './content/cms-client';
+import { HomeItem, PageItem } from './content/resolvers';
 
 export const routes = Router();
 
@@ -19,19 +20,19 @@ routes.get('**', async (req, res) => {
 async function getItem(navigationType: 'page' | 'subpage', url: string) {
   if (!url || url === 'home') {
     const response = await client
-      .item('home')
+      .item<HomeItem>('home')
       .depthParameter(3)
       .getPromise();
 
-    return response.isEmpty ? null : response.item;
+    return response.isEmpty ? null : response.item.toJSON();
   }
 
   const response = await client
-    .items()
+    .items<PageItem>()
     .containsFilter('elements.navigation', [navigationType])
     .equalsFilter('url', url)
     .depthParameter(3)
     .getPromise();
 
-    return response.isEmpty ? null : response.getFirstItem();
+    return response.isEmpty ? null : response.getFirstItem().toJSON();
 }
