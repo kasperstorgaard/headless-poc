@@ -1,14 +1,15 @@
-import { ContentItem, Fields } from 'kentico-cloud-delivery';
+import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
-export class Promo extends ContentItem {
-    public static codename = 'promo';
+import { Page } from './page';
+
+export class HeroSection extends ContentItem {
+    public static type = 'hero_section';
 
     public backgroundImage: Fields.AssetsField;
     public ctaText: Fields.TextField;
     public headline: Fields.TextField;
-    public name: Fields.TextField;
     public body: Fields.TextField;
-    public ctaLink: ContentItem[];
+    public ctaLink: Page[];
     constructor() {
         super({
             propertyResolver: ((fieldName: string) => {

@@ -1,15 +1,16 @@
 import express from 'express';
 import {join} from 'path';
-
-import {router} from './router';
+import { updateNavigation } from './content/navigation';
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', join(__dirname, 'views'));
-app.use(router);
-app.use(express.static(join(__dirname, '../dist/static')));
+app.use('/static', express.static(join(__dirname, '../dist/static'), {}));
+
+app.get('**', async (_req, res) => res.render('index'));
 
 app.listen(3000, () => {
-  console.log('server started on localhost:3000');
+  console.log('server started on localhost:3000')
+  updateNavigation('default');
 });

@@ -3,7 +3,7 @@ import { ContentItem, Fields } from 'kentico-cloud-delivery';
 import { Page } from './page';
 
 export class PickABox extends ContentItem {
-    public static codename = 'pick_a_box';
+    public static type = 'pick_a_box';
 
     public sections: Page[];
     public headline: Fields.TextField;

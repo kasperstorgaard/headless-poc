@@ -16,7 +16,7 @@ class Footer extends connect(store)(LitElement) {
   protected render() {
     // Anything that's related to rendering should be done in here.
     return html`
-    <link rel="stylesheet" href="components/partials/footer/footer.css">
+    <link rel="stylesheet" href="static/components/partials/footer/footer.css">
     <footer>
       this is footer...
     </footer>

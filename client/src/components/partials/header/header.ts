@@ -20,7 +20,7 @@ import { menuIcon } from '../../shared/icons';
 
 class Header extends connect(store)(LitElement) {
   protected render() {
-    const nav = (className) => html`
+    const nav = (className: string) => html`
     <nav class="${className}">
       <a ?selected="${this._page === 'page1'}" href="/page1">page One</a>
       <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
@@ -29,7 +29,7 @@ class Header extends connect(store)(LitElement) {
 
     // Anything that's related to rendering should be done in here.
     return html`
-    <link rel="stylesheet" href="components/partials/header/header.css">
+    <link rel="stylesheet" href="static/components/partials/header/header.css">
 
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">

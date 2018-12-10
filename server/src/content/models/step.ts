@@ -1,7 +1,7 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 export class Step extends ContentItem {
-    public static codename = 'step';
+    public static type = 'step';
 
     public illustrationThumbnail: Fields.AssetsField;
     public headline: Fields.TextField;

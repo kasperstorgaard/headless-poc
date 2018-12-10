@@ -1,7 +1,7 @@
 import { ContentItem, Fields } from 'kentico-cloud-delivery';
 
 export class ProductGroup extends ContentItem {
-    public static codename = 'product_group';
+    public static type = 'product_group';
 
     public url: Fields.UrlSlugField;
     public products: any[];

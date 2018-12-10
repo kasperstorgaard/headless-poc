@@ -12,7 +12,7 @@ import {
   StepsSection,
   PickABox,
   Promo
-} from '../types';
+} from './models';
 
 export const client = new DeliveryClient({
   projectId: project.key,
@@ -24,5 +24,5 @@ export const client = new DeliveryClient({
     ProductGroup,
     PickABox,
     Promo
-  ].map(T => new TypeResolver(T.codename, () => new T()))
+  ].map(T => new TypeResolver(T.type, () => new T()))
 });

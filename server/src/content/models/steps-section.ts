@@ -3,7 +3,7 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 import {Step} from './step';
 
 export class StepsSection extends ContentItem {
-    public static codename = 'steps_section';
+    public static type = 'steps_section';
 
     public name: Fields.TextField;
     public ctaLink: ContentItem[];

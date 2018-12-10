@@ -24,7 +24,7 @@ class App extends connect(store)(LitElement) {
   protected render() {
     // Anything that's related to rendering should be done in here.
     return html`
-    <link rel="stylesheet" href="components/app.css">
+    <link rel="stylesheet" href="static/components/app.css">
 
     <sif-header></sif-header>
     <sif-main></sif-main>
