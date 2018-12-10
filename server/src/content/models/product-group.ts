@@ -7,4 +7,5 @@ export class ProductGroup extends ContentItem {
     public products: any[];
     public name: Fields.TextField;
     public headline: Fields.TextField;
+    public navigation: Fields.TaxonomyField;
 }
