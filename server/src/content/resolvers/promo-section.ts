@@ -1,6 +1,7 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {PromoSection} from '../models';
+import {PageItem} from './page';
 
 export class PromoSectionItem extends ContentItem {
   public static type = 'promo';
@@ -10,7 +11,7 @@ export class PromoSectionItem extends ContentItem {
   public headline: Fields.TextField;
   public name: Fields.TextField;
   public body: Fields.TextField;
-  public ctaLink: ContentItem[];
+  public ctaLink: PageItem[];
 
   constructor() {
     super({
@@ -30,12 +31,13 @@ export class PromoSectionItem extends ContentItem {
   }
 
   public toJSON(): PromoSection {
-    const ctaLink = this.ctaLink[0];
+    const ctaItem = this.ctaLink[0].toJSON();
+
     const assets = this.backgroundImage && this.backgroundImage.assets || [];
 
     return {
       cta: {
-        url: ctaLink ? ctaLink.url : '',
+        url: ctaItem.url, 
         text: this.ctaText.text
       },
       backgroundImage: assets.length ? assets[0].url : '',

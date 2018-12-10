@@ -1,13 +1,14 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
-import {StepItem} from './step';
 import {StepsSection} from '../models';
+import {StepItem} from './step';
+import { PageItem } from './page';
 
 export class StepsSectionItem extends ContentItem {
   static type = 'steps_section';
 
   name: Fields.TextField;
-  ctaLink: ContentItem[];
+  ctaLink: PageItem[];
   ctaText: Fields.TextField;
   headline: Fields.TextField;
   steps: StepItem[];
@@ -27,14 +28,14 @@ export class StepsSectionItem extends ContentItem {
   }
 
   toJSON(): StepsSection {
-    const ctaLink = this.ctaLink[0];
+    const ctaItem = this.ctaLink[0].toJSON();
 
     return {
       headline: this.headline.text,
       name: this.name.text,
       steps: this.steps.map(step => step.toJSON()),
       cta: {
-        url: ctaLink && ctaLink.url || '',
+        url: ctaItem ? ctaItem.url : '',
         text: this.ctaText.text
       }
     }

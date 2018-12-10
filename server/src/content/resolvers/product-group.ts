@@ -1,5 +1,6 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 import {ProductGroup} from '../models';
+import { getLocalUrl } from '../navigation';
 
 export class ProductGroupItem extends ContentItem {
   static type = 'product_group';
@@ -9,6 +10,12 @@ export class ProductGroupItem extends ContentItem {
   name: Fields.TextField;
   headline: Fields.TextField;
   navigation: Fields.TaxonomyField;
+
+  constructor() {
+    super({
+      linkResolver: () => getLocalUrl('products')
+    })
+  }
 
   toJSON(): ProductGroup {
     return {

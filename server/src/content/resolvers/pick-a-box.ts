@@ -2,6 +2,7 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {PickABox} from '../models';
 import {PageItem} from './page';
+import { getLocalUrl } from '../navigation';
 
 export class PickABoxItem extends ContentItem {
   static type = 'pick_a_box';
@@ -12,6 +13,14 @@ export class PickABoxItem extends ContentItem {
   url: Fields.UrlSlugField;
   description: Fields.TextField;
   boxes: any[];
+
+  constructor() {
+    super({
+      linkResolver: (link) => {
+        return `/${getLocalUrl('products')}/${link.urlSlug}`;
+      }
+    })
+  }
 
   toJSON(): PickABox {
     return {
