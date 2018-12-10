@@ -56,7 +56,7 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch =>
   } catch(error) {
     page = 'page404';
     import('../components/pages/page-404');
-    // TODO: dispatch error
+    dispatch(updatePage(page, null));
   }
 };
 
