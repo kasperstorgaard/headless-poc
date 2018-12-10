@@ -36,5 +36,9 @@
     "kentico-cloud-delivery": "^5.2.1",
     "pug": "^2.0.3",
     "rxjs": "^6.3.3"
+  },
+  "nodemonConfig": {
+    "ignore": ["**/*.map.js", "*.pug", "static/*"],
+    "delay": 100
   }
 }
