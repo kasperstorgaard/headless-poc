@@ -3,6 +3,9 @@ import {LitElement, html, property} from '@polymer/lit-element';
 import {StepsSection as StepsSectionItem} from '../../../../../../server/src/content/models/steps-section';
 
 class StepsSection extends LitElement {
+  @property({type: String})
+  theme: string = 'primary';
+
   @property({type: Object})
   item: StepsSectionItem|null = null;
 
@@ -12,7 +15,34 @@ class StepsSection extends LitElement {
     }
 
     return html`
-    <section>
+    <link rel="stylesheet" href="/static/blocks/section.css">
+    <link rel="stylesheet" href="/static/blocks/button.css">
+    <style>
+      .step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2em;
+      }
+
+      .illustration {
+        margin-right: 1.5em;
+        width: 67px;
+        height: 67px;
+      }
+
+      .step-headline,
+      .step-body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .step-headline {
+        font-weight: 700;
+        line-height: 1.5em;
+        font-size: 1em;
+      }
+    </style>
+    <section class="sif-section theme-${this.theme}">
       <ul class="list">
         ${this.item.steps.map(step => html`
         <li class="step">
@@ -24,7 +54,7 @@ class StepsSection extends LitElement {
         </li>
         `)}
       </ul>
-      <a class="cta" href="${this.item.cta.url}">${this.item.cta.text}</a>
+      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.text}</a>
     </section>`;
   }
 }
