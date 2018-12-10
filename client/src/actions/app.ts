@@ -19,7 +19,7 @@ type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
 export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch) => {
   // Extract the page name from path.
-  const page = path === '/' ? 'page1' : path.slice(1);
+  const page = path === '/' ? 'home' : path.slice(1);
 
   // Any other info you might want to extract from the path (like page type),
   // you can do here
@@ -29,12 +29,14 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
   dispatch(updateDrawerState(false));
 };
 
-const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
+const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch => {
+  const pageResponse = fetch(`/api/v1/route/${page}`);
+
   switch(page) {
-    case 'page1':
-      import('../components/pages/page1').then(() => {
+    case 'home':
+      import('../components/pages/home').then(() => {
         // Put code in here that you want to run every time when
-        // navigating to page1 after page1.js is loaded.
+        // navigating to home after home.js is loaded.
       });
       break;
     case 'page2':
@@ -48,13 +50,21 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => (dispatch) => {
       import('../components/pages/page-404');
   }
 
-  dispatch(updatePage(page));
+  try {
+    const data = (await pageResponse).json();
+    dispatch(updatePage(page, await data));
+  } catch(error) {
+    page = 'page404';
+    import('../components/pages/page-404');
+    // TODO: dispatch error
+  }
 };
 
-const updatePage: ActionCreator<AppActionUpdatePage> = (page: string) => {
+const updatePage: ActionCreator<AppActionUpdatePage> = (page: string, data: any) => {
   return {
     type: UPDATE_PAGE,
-    page
+    page,
+    data
   };
 };
 

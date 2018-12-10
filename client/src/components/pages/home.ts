@@ -1,16 +1,25 @@
-import { html } from '@polymer/lit-element';
+import { html, property } from '@polymer/lit-element';
+import { connect } from 'pwa-helpers/connect-mixin';
 
+import { Home as HomeItem } from '../../../../server/src/content/models/home';
+import { store, RootState } from '../../store';
 import { PageViewElement } from '../shared/page-view-element';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../shared/shared-styles';
 
-class Page1 extends PageViewElement {
+class Home extends connect(store)(PageViewElement) {
+
+  @property({type: Object})
+  private _pageData: HomeItem | null = null;
+
   protected render() {
+    const sections = this._pageData && this._pageData.sections || [];
+
     return html`
       ${SharedStyles}
       <section>
-        <h2>Static page</h2>
+        <h2>${sections[0].headline.text}</h2>
         <p>This is a text-only page.</p>
         <p>It doesn't do anything other than display some static text.</p>
       </section>
@@ -23,6 +32,10 @@ class Page1 extends PageViewElement {
       </section>
     `;
   }
+
+  stateChanged(state: RootState) {
+    this._pageData = state.app!.pageData;
+  }
 }
 
-window.customElements.define('sif-page1', Page1);
+window.customElements.define('sif-home', Home);

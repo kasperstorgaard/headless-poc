@@ -17,15 +17,21 @@ routes.get('**', async (req, res) => {
 })
 
 async function getItem(navigationType: 'page' | 'subpage', url: string) {
+  if (!url || url === 'home') {
+    const response = await client
+      .item('home')
+      .depthParameter(3)
+      .getPromise();
+
+    return response.isEmpty ? null : response.item;
+  }
+
   const response = await client
     .items()
     .containsFilter('elements.navigation', [navigationType])
     .equalsFilter('url', url)
-    .depthParameter(1)
-    .queryConfig({
-      throwErrorForMissingLinkedItems: false
-    })
+    .depthParameter(3)
     .getPromise();
 
-  return response.isEmpty ? null : response.getFirstItem();
+    return response.isEmpty ? null : response.getFirstItem();
 }

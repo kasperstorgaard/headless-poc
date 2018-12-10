@@ -12,7 +12,7 @@ class Main extends connect(store)(LitElement) {
 
     <!-- Main content -->
     <main role="main" class="main-content">
-      <sif-page1 class="page" ?active="${this._page === 'page1'}"></sif-page1>
+      <sif-home class="page" ?active="${this._page === 'home'}"></sif-home>
       <sif-page2 class="page" ?active="${this._page === 'page2'}"></sif-page2>
       <sif-page3 class="page" ?active="${this._page === 'page3'}"></sif-page3>
       <sif-page404 class="page" ?active="${this._page === 'page404'}"></sif-page404>

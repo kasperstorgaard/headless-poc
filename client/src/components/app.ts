@@ -38,7 +38,6 @@ class App extends connect(store)(LitElement) {
   @property({type: String})
   private _page = '';
 
-
   constructor() {
     super();
     // To force all event listeners for gestures to be passive.

@@ -22,7 +22,7 @@ class Header extends connect(store)(LitElement) {
   protected render() {
     const nav = (className: string) => html`
     <nav class="${className}">
-      <a ?selected="${this._page === 'page1'}" href="/page1">page One</a>
+      <a ?selected="${this._page === 'home'}" href="/">home</a>
       <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
       <a ?selected="${this._page === 'page3'}" href="/page3">page Three</a>
     </nav>`;

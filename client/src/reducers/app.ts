@@ -11,6 +11,7 @@ import { RootAction } from '../store';
 
 export interface AppState {
   page: string;
+  pageData: any;
   offline: boolean;
   drawerOpened: boolean;
   snackbarOpened: boolean;
@@ -18,6 +19,7 @@ export interface AppState {
 
 const INITIAL_STATE: AppState = {
   page: '',
+  pageData: {},
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
@@ -28,7 +30,8 @@ const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action: any) 
     case UPDATE_PAGE:
       return {
         ...state,
-        page: action.page
+        page: action.page,
+        pageData: action.data
       };
     case UPDATE_OFFLINE:
       return {
