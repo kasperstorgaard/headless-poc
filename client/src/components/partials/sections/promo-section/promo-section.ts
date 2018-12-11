@@ -15,6 +15,7 @@ class PromoSection extends LitElement {
     }
 
     return html`
+    <link rel="stylesheet" href="/static/styles/typography.css">
     <link rel="stylesheet" href="/static/blocks/section.css">
     <link rel="stylesheet" href="/static/blocks/button.css">
     <style>
