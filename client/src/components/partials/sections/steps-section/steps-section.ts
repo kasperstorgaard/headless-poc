@@ -15,8 +15,10 @@ class StepsSection extends LitElement {
     }
 
     return html`
+    <link rel="stylesheet" href="/static/styles/reset.css">
     <link rel="stylesheet" href="/static/blocks/section.css">
     <link rel="stylesheet" href="/static/blocks/button.css">
+    <link rel="stylesheet" href="/static/blocks/steps-list.css">
     <style>
       .step {
         display: flex;
@@ -31,7 +33,7 @@ class StepsSection extends LitElement {
       }
 
       .step-headline,
-      .step-body {
+      .step-text {
         margin: 0;
         padding: 0;
       }
@@ -41,13 +43,14 @@ class StepsSection extends LitElement {
         line-height: 1.5em;
         font-size: 1em;
       }
+
     </style>
     <section class="sif-section theme-${this.theme}">
       <ul class="list">
         ${this.item.steps.map(step => html`
         <li class="step">
           <img class="illustration" src="${step.illustrationThumbnail}">
-          <div class="step-body">
+          <div>
             <h3 class="step-headline">${step.headline}</h3>
             <p class="step-text">${step.summary}</p>
           </div>
