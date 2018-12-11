@@ -18,4 +18,4 @@ class Page404 extends PageViewElement {
   }
 }
 
-window.customElements.define('sif-404', Page404);
+window.customElements.define('sif-page404', Page404);
