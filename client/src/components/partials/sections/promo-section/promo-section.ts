@@ -19,7 +19,7 @@ class PromoSection extends LitElement {
     <link rel="stylesheet" href="/static/blocks/button.css">
     <style>
       section {
-        min-height: 30em;
+        min-height: 26em;
         text-align: center;
         background-position: center;
         background-size: cover;
@@ -27,11 +27,6 @@ class PromoSection extends LitElement {
 
       .headline, .body, .cta {
         max-width: 270px;
-      }
-
-      .headline {
-        font-weight: 700;
-        margin: 0;
       }
     </style>
     <section class="sif-section theme-${this.theme}" style="background-image: url(${this.item.backgroundImage})">
