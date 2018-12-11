@@ -24,7 +24,7 @@ async function getItem(navigationType: 'page' | 'subpage', url: string) {
       .depthParameter(3)
       .getPromise();
 
-    return response.isEmpty ? null : response.item.toJSON();
+    return response.isEmpty ? null : response.item.toModel();
   }
 
   const response = await client
@@ -34,5 +34,5 @@ async function getItem(navigationType: 'page' | 'subpage', url: string) {
     .depthParameter(3)
     .getPromise();
 
-    return response.isEmpty ? null : response.getFirstItem().toJSON();
+    return response.isEmpty ? null : response.getFirstItem().toModel();
 }

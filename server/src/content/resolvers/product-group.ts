@@ -1,8 +1,11 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
-import {ProductGroup} from '../models';
-import { getLocalUrl } from '../navigation';
 
-export class ProductGroupItem extends ContentItem {
+import {ProductGroup} from '../models';
+import {getLocalUrl} from '../navigation';
+import {ContentResolver} from './base';
+
+export class ProductGroupItem extends ContentItem
+  implements ContentResolver<ProductGroup> {
   static type = 'product_group';
 
   url: Fields.UrlSlugField;
@@ -17,13 +20,14 @@ export class ProductGroupItem extends ContentItem {
     })
   }
 
-  toJSON(): ProductGroup {
+  toModel(): ProductGroup {
     return {
+      type: 'productGroup',
+      navigation: 'subpage',
       url: this.url ? this.url.getUrl() : '',
-      products: (this.products || []).map(product => product.toJSON()),
+      products: (this.products || []).map(product => product.toModel()),
       name: this.name ? this.name.text : '',
-      headline: this.headline ? this.headline.text : '',
-      navigation: this.navigation ? this.navigation.taxonomyTerms[0].name : ''
+      headline: this.headline ? this.headline.text : ''
     }
   }
 }

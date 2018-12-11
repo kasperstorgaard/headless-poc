@@ -1,10 +1,12 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {PickABox} from '../models';
+import {getLocalUrl} from '../navigation';
 import {PageItem} from './page';
-import { getLocalUrl } from '../navigation';
+import {ContentResolver} from './base';
 
-export class PickABoxItem extends ContentItem {
+export class PickABoxItem extends ContentItem
+  implements ContentResolver<PickABox> {
   static type = 'pick_a_box';
 
   sections: PageItem[];
@@ -22,14 +24,16 @@ export class PickABoxItem extends ContentItem {
     })
   }
 
-  toJSON(): PickABox {
+  toModel(): PickABox {
     return {
-      sections: (this.sections || []).map(section => section.toJSON()),
+      type: 'pick_a_box',
+      navigation: 'subpage',
+      sections: (this.sections || []).map(section => section.toModel()),
       headline: this.headline ? this.headline.text : '',
       name: this.name ? this.name.text : '',
       url: this.url ? this.url.getUrl() : '',
       description: this.description ? this.description.text : '',
-      boxes: this.boxes.map(box => box.toJSON())
+      boxes: this.boxes.map(box => box.toModel())
     }
   }
 }

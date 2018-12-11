@@ -1,8 +1,10 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {Step} from '../models';
+import {ContentResolver} from './base';
 
-export class StepItem extends ContentItem {
+export class StepItem extends ContentItem
+  implements ContentResolver<Step> {
   public static type = 'step';
 
   public illustrationThumbnail: Fields.AssetsField;
@@ -21,10 +23,11 @@ export class StepItem extends ContentItem {
     });
   }
 
-  toJSON(): Step {
+  toModel(): Step {
     const illustrationThumbnail = this.illustrationThumbnail.assets[0];
     const image = this.image.assets[0];
     return {
+      type: 'step',
       illustrationThumbnail: illustrationThumbnail ? illustrationThumbnail.url : '',
       headline: this.headline.text,
       description: this.description.text,

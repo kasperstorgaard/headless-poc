@@ -2,8 +2,10 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {PromoSection} from '../models';
 import {PageItem} from './page';
+import {ContentResolver} from './base';
 
-export class PromoSectionItem extends ContentItem {
+export class PromoSectionItem extends ContentItem
+  implements ContentResolver<PromoSection> {
   public static type = 'promo';
 
   public backgroundImage: Fields.AssetsField;
@@ -30,12 +32,13 @@ export class PromoSectionItem extends ContentItem {
     });
   }
 
-  public toJSON(): PromoSection {
-    const ctaItem = this.ctaLink[0].toJSON();
+  public toModel(): PromoSection {
+    const ctaItem = this.ctaLink[0].toModel();
 
     const assets = this.backgroundImage && this.backgroundImage.assets || [];
 
     return {
+      type: 'promoSection',
       cta: {
         url: ctaItem.url, 
         text: this.ctaText.text

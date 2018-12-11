@@ -7,5 +7,5 @@ export default function getProductsPage() {
   return client.item<ProductGroupItem>('products')
     .depthParameter(2)
     .getObservable()
-    .pipe(map(response => response.item.toJSON()));
+    .pipe(map(response => response.item.toModel()));
 }

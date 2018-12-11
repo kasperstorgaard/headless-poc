@@ -1,6 +1,7 @@
-import { Page } from './page';
+import {Page} from './page';
+import {PageBase} from './base';
 
-export interface PickABox {
+export interface PickABox extends PageBase {
   sections: Page[];
   headline: string;
   name: string;
