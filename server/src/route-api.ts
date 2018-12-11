@@ -30,7 +30,7 @@ async function getItem(navigationType: 'page' | 'subpage', url: string) {
   const response = await client
     .items<PageItem>()
     .containsFilter('elements.navigation', [navigationType])
-    .equalsFilter('url', url)
+    .equalsFilter('elements.url', url)
     .depthParameter(3)
     .getPromise();
 
