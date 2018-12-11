@@ -1,5 +1,5 @@
 # Server #
-Basic express server side rendered application
+Serves index page with application resources and handles cms calls on behalf of the client.
 
 ## Setup ##
 First of all, let's install dependencies:
@@ -33,14 +33,6 @@ Then to start the server, simply run
 npm start
 ```
 
-## Background ##
-The server in this project sits between the cms and the client.
-It fetches all relevant data for the user from CMS, and renders it into views.
-Those views/partials are then cached until the CMS content changes.
-It doesn't handle complex client interactions and ui though,
-as that is handled by the client separately.
-
 ## Responsibilities ##
-- Routing
-- Rendering views
-- Pulling in client-side scripts/styles
+- Display index page with application component, global styles, fonts
+- Api calls to cms
