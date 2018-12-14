@@ -10,7 +10,8 @@ import {
   StepsSectionItem,
   ProductGroupItem,
   PickABoxItem,
-  PromoSectionItem
+  PromoSectionItem,
+  Route
 } from './resolvers';
 
 export const client = new DeliveryClient({
@@ -21,6 +22,7 @@ export const client = new DeliveryClient({
     StepsSectionItem,
     ProductGroupItem,
     PickABoxItem,
-    PromoSectionItem
+    PromoSectionItem,
+    Route
   ].map(T => new TypeResolver(T.type, () => new T()))
 });

@@ -5,3 +5,4 @@ export * from './promo-section';
 export * from './step';
 export * from './steps-section';
 export * from './page';
+export * from './route';

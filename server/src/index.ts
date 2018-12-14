@@ -8,7 +8,7 @@ import chalk from 'chalk';
 import logger from 'morgan';
 
 import {updateNavigation} from './content/navigation';
-import {routes} from './route-api';
+import {routes} from './api';
 
 const port = 3000;
 const app = express();
@@ -25,7 +25,7 @@ app.use(logger('dev'))
 app.use(compression());
 app.use(cookieParser());
 app.use('/static', express.static(join(__dirname, 'static'), {}));
-app.use('/api/v1/route', routes);
+app.use('/api', routes);
 
 app.get('**', async (_req, res) => res.render('index'));
 

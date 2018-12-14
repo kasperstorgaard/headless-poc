@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import {client} from './content/cms-client';
-import { HomeItem, PageItem } from './content/resolvers';
+import {client} from '../content/cms-client';
+import {HomeItem, PageItem} from '../content/resolvers';
 
 export const routes = Router();
 

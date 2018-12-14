@@ -30,7 +30,7 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
 };
 
 const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch => {
-  const pageResponse = fetch(`/api/v1/route/${page}`);
+  const pageResponse = fetch(`/api/route/${page}`);
 
   switch(page) {
     case 'home':
