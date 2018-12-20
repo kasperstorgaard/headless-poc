@@ -1,7 +1,7 @@
-import { Action, ActionCreator } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import {Action, ActionCreator} from 'redux';
+import {ThunkAction} from 'redux-thunk';
 
-import { RootState } from '../store';
+import {RootState} from '../store';
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const UPDATE_NAVIGATION = 'UPDATE_NAVIGATION';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
@@ -96,7 +96,7 @@ export const showSnackbar: ActionCreator<ThunkResult> = () => (dispatch) => {
   });
   window.clearTimeout(snackbarTimer);
   snackbarTimer = window.setTimeout(() =>
-    dispatch({ type: CLOSE_SNACKBAR }), 3000);
+    dispatch({type: CLOSE_SNACKBAR}), 3000);
 };
 
 export const updateOffline: ActionCreator<ThunkResult> = (offline: boolean) => (dispatch, getState) => {

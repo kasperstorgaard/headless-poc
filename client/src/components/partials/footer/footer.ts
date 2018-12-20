@@ -1,8 +1,8 @@
-import { LitElement, html, property } from '@polymer/lit-element';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import {LitElement, html, property} from '@polymer/lit-element';
+import {connect} from 'pwa-helpers/connect-mixin.js';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../../../store';
+import {store, RootState} from '../../../store';
 
 import '../../shared/snack-bar';
 

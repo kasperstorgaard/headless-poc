@@ -1,17 +1,17 @@
-import { html, property } from '@polymer/lit-element';
-import { connect } from 'pwa-helpers/connect-mixin';
+import {html, property} from '@polymer/lit-element';
+import {connect} from 'pwa-helpers/connect-mixin';
 
-import { PageViewElement } from '../shared/page-view-element';
+import {PageViewElement} from '../shared/page-view-element';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../../store';
+import {store, RootState} from '../../store';
 
 // store.addReducers({
 //   counter
 // });
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared/shared-styles';
+import {SharedStyles} from '../shared/shared-styles';
 
 class Page2 extends connect(store)(PageViewElement) {
   protected render() {

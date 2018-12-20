@@ -8,7 +8,7 @@ import {store, RootState} from '../../store';
 import {PageViewElement} from '../shared/page-view-element';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared/shared-styles';
+import {SharedStyles} from '../shared/shared-styles';
 
 class Home extends connect(store)(PageViewElement) {
 

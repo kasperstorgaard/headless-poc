@@ -1,13 +1,13 @@
-import { LitElement, html, property, PropertyValues } from '@polymer/lit-element';
-import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import { connect } from 'pwa-helpers/connect-mixin.js';
-import { installMediaQueryWatcher } from 'pwa-helpers/media-query.js';
-import { installOfflineWatcher } from 'pwa-helpers/network.js';
-import { installRouter } from 'pwa-helpers/router.js';
-import { updateMetadata } from 'pwa-helpers/metadata.js';
+import {LitElement, html, property, PropertyValues} from '@polymer/lit-element';
+import {setPassiveTouchGestures} from '@polymer/polymer/lib/utils/settings.js';
+import {connect} from 'pwa-helpers/connect-mixin.js';
+import {installMediaQueryWatcher} from 'pwa-helpers/media-query.js';
+import {installOfflineWatcher} from 'pwa-helpers/network.js';
+import {installRouter} from 'pwa-helpers/router.js';
+import {updateMetadata} from 'pwa-helpers/metadata.js';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../store';
+import {store, RootState} from '../store';
 
 import './partials/header/header';
 import './partials/main/main';

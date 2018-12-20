@@ -1,8 +1,8 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from '../shared/page-view-element';
+import {html} from '@polymer/lit-element';
+import {PageViewElement} from '../shared/page-view-element';
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared/shared-styles';
+import {SharedStyles} from '../shared/shared-styles';
 
 class Page404 extends PageViewElement {
   protected render() {

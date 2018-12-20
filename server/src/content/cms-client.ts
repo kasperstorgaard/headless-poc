@@ -1,4 +1,4 @@
-import { 
+import {
   TypeResolver,
   DeliveryClient
 } from 'kentico-cloud-delivery';

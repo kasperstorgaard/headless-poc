@@ -13,12 +13,12 @@ import {
   Reducer,
   StoreEnhancer
 } from 'redux';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
+import thunk, {ThunkMiddleware} from 'redux-thunk';
 
-import { lazyReducerEnhancer } from 'pwa-helpers/lazy-reducer-enhancer.js';
+import {lazyReducerEnhancer} from 'pwa-helpers/lazy-reducer-enhancer.js';
 
-import app, { AppState } from './reducers/app';
-import { AppAction } from './actions/app';
+import app, {AppState} from './reducers/app';
+import {AppAction} from './actions/app';
 
 // Overall state extends static states and partials lazy states.
 export interface RootState {

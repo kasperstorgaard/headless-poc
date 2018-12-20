@@ -1,11 +1,11 @@
-import { html, property } from '@polymer/lit-element';
+import {html, property} from '@polymer/lit-element';
 
-import { connect } from 'pwa-helpers/connect-mixin';
+import {connect} from 'pwa-helpers/connect-mixin';
 
 // This element is connected to the Redux store.
-import { store, RootState } from '../../store';
+import {store, RootState} from '../../store';
 
-import { PageViewElement } from '../shared/page-view-element';
+import {PageViewElement} from '../shared/page-view-element';
 
 // We are lazy loading its reducer.
 // store.addReducers({
@@ -13,8 +13,8 @@ import { PageViewElement } from '../shared/page-view-element';
 // });
 
 // These are the shared styles needed by this element.
-import { SharedStyles } from '../shared/shared-styles';
-import { addToCartIcon } from '../shared/icons';
+import {SharedStyles} from '../shared/shared-styles';
+import {addToCartIcon} from '../shared/icons';
 
 class Page3 extends connect(store)(PageViewElement) {
   protected render() {

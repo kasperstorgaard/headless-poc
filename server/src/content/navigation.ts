@@ -32,7 +32,7 @@ export function getRootPages(language = 'default'): Observable<ContentItem> {
       client.item<ContentItem>(page)
         .languageParameter(language)
         .depthParameter(1)
-        .queryConfig({ throwErrorForMissingLinkedItems: false })
+        .queryConfig({throwErrorForMissingLinkedItems: false})
         .getObservable()
         .pipe(map(response => response.item))
     ));
