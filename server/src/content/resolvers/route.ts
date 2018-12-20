@@ -12,7 +12,6 @@ export class RouteItem extends ContentItem {
   page: PageItem[];
 
   toModel(): Route {
-    console.log(this.name);
     return {
       name: this.name.text,
       codename: this.system.codename,
