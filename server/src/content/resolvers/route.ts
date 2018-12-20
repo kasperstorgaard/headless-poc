@@ -11,17 +11,24 @@ export class RouteItem extends ContentItem {
   routes: RouteItem[];
   page: PageItem[];
 
-  toModel(): Route {
-    return {
+  toModel(parent?: Route): Route {
+    const route = {
       name: this.name.text,
       codename: this.system.codename,
-      url: getUrl(this),
-      routes: this.routes.map(subroute => subroute.toModel())
-    }
+      url: getUrl(this, parent),
+      routes: []
+    } as Route;
+
+    return { ...route, routes: this.routes.map(subroute => subroute.toModel(route)) };
   }
 }
 
-function getUrl(route: RouteItem): string {
+function getUrl(route: RouteItem, parent?: Route): string {
   const page = route.page[0];
-  return page instanceof HomeItem ? '/' : page.url.value;
+  const url = page instanceof HomeItem ? '' : page.url.value;
+  if (!parent) {
+    return url ? url : '/';
+  } else {
+    return parent.url + url;
+  }
 }
