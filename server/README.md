@@ -33,6 +33,13 @@ Then to start the server, simply run
 npm start
 ```
 
+This will bundle and start the express server.
+On any file change the server will restart.
+
+## Production ##
+To build for production, run:
+```npm run prod```
+
 ## Responsibilities ##
 - Display index page with application component, global styles, fonts
 - Api calls to cms

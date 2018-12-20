@@ -17,7 +17,8 @@ import './partials/footer/footer';
 import {
   navigate,
   updateOffline,
-  updateDrawerState
+  updateDrawerState,
+  loadNavigation
 } from '../actions/app';
 
 class App extends connect(store)(LitElement) {
@@ -50,6 +51,7 @@ class App extends connect(store)(LitElement) {
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,
         () => store.dispatch(updateDrawerState(false)));
+    store.dispatch(loadNavigation());
   }
 
   protected updated(changedProps: PropertyValues) {
@@ -62,7 +64,6 @@ class App extends connect(store)(LitElement) {
       });
     }
   }
-
 
   stateChanged(state: RootState) {
     this._page = state.app!.page;

@@ -11,7 +11,7 @@ import {
   ProductGroupItem,
   PickABoxItem,
   PromoSectionItem,
-  Route
+  RouteItem
 } from './resolvers';
 
 export const client = new DeliveryClient({
@@ -23,6 +23,6 @@ export const client = new DeliveryClient({
     ProductGroupItem,
     PickABoxItem,
     PromoSectionItem,
-    Route
+    RouteItem
   ].map(T => new TypeResolver(T.type, () => new T()))
 });

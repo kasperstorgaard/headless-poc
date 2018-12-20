@@ -2,8 +2,9 @@ import {Router} from 'express';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 
-import {Route, HomeItem} from '../content/resolvers';
+import {RouteItem, HomeItem} from '../content/resolvers';
 import {client} from '../content/cms-client';
+import {Route} from '../content/models/route';
 
 export const routes = Router();
 
@@ -12,7 +13,7 @@ routes.get('**', async (_req, res) => {
   res.json({routeTree});
 })
 
-const localesLookup: {[key:string]: Observable<RouteTree>} = {};
+const localesLookup: {[key:string]: Observable<Route>} = {};
 
 export function getRouteTree(language = 'default', update = false) {
   if (!localesLookup[language] || update) {
@@ -21,30 +22,13 @@ export function getRouteTree(language = 'default', update = false) {
   return localesLookup[language];
 }
 
-function getRootRouteItem(language = 'default'): Observable<RouteTree> {
-  return client.item<Route>('root_route')
+function getRootRouteItem(language = 'default'): Observable<Route> {
+  return client.item<RouteItem>('root_route')
     .languageParameter(language)
     .depthParameter(10)
     .getObservable()
     .pipe(
-      map(response => buildRouteTree(response.item)),
+      map(response => response.item.toModel()),
       shareReplay(1)
     );
-}
-
-function buildRouteTree(route: Route): RouteTree {
-  const page = route.page[0];
-  const url = page instanceof HomeItem ? '' : page.url.value;
-
-  return {
-    codename: route.system.codename,
-    url,
-    routes: route.routes.map(subroute => buildRouteTree(subroute))
-  }
-}
-
-export interface RouteTree {
-    codename: string;
-    url: string;
-    routes: RouteTree[]
 }

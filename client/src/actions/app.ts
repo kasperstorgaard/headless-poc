@@ -3,6 +3,7 @@ import { ThunkAction } from 'redux-thunk';
 
 import { RootState } from '../store';
 export const UPDATE_PAGE = 'UPDATE_PAGE';
+export const UPDATE_NAVIGATION = 'UPDATE_NAVIGATION';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
@@ -13,7 +14,9 @@ export interface AppActionUpdateOffline extends Action<'UPDATE_OFFLINE'> {offlin
 export interface AppActionUpdateDrawerState extends Action<'UPDATE_DRAWER_STATE'> {opened: boolean};
 export interface AppActionOpenSnackbar extends Action<'OPEN_SNACKBAR'> {};
 export interface AppActionCloseSnackbar extends Action<'CLOSE_SNACKBAR'> {};
-export type AppAction = AppActionUpdatePage | AppActionUpdateOffline | AppActionUpdateDrawerState | AppActionOpenSnackbar | AppActionCloseSnackbar;
+export interface AppActionUpdateNavigation extends Action<'UPDATE_NAVIGATION'> {};
+export type AppAction = AppActionUpdatePage | AppActionUpdateOffline | AppActionUpdateDrawerState |
+  AppActionOpenSnackbar | AppActionCloseSnackbar | AppActionUpdateNavigation;
 
 type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
@@ -27,6 +30,16 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
   dispatch(updateDrawerState(false));
+};
+
+export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch => {
+  try {
+    const response = await fetch(`/api/navigation`);
+    const data = await response.json();
+    dispatch(updateNavigation(data.routeTree));
+  } catch(error) {
+    dispatch(updateNavigation(null));
+  }
 };
 
 const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch => {
@@ -58,6 +71,13 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch =>
     import('../components/pages/page-404');
     dispatch(updatePage(page, null));
   }
+};
+
+const updateNavigation: ActionCreator<AppActionUpdateNavigation> = (data: any) => {
+  return {
+    type: UPDATE_NAVIGATION,
+    data
+  };
 };
 
 const updatePage: ActionCreator<AppActionUpdatePage> = (page: string, data: any) => {

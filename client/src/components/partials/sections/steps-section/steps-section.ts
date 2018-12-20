@@ -1,6 +1,5 @@
 import {LitElement, html, property} from '@polymer/lit-element';
-
-import {StepsSection as StepsSectionItem} from '../../../../../../server/src/content/models/steps-section';
+import {StepsSection as StepsSectionItem} from 'headless-poc-server/dist/types';
 
 class StepsSection extends LitElement {
   @property({type: String})

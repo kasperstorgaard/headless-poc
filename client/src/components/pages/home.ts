@@ -1,10 +1,11 @@
-import { html, property } from '@polymer/lit-element';
-import { connect } from 'pwa-helpers/connect-mixin';
+import {html, property} from '@polymer/lit-element';
+import {connect} from 'pwa-helpers/connect-mixin';
+
+import {Home as HomeItem} from 'headless-poc-server/dist/types';
 
 import '../../components/partials/sections/sections';
-import { Home as HomeItem } from '../../../../server/src/content/models/home';
-import { store, RootState } from '../../store';
-import { PageViewElement } from '../shared/page-view-element';
+import {store, RootState} from '../../store';
+import {PageViewElement} from '../shared/page-view-element';
 
 // These are the shared styles needed by this element.
 import { SharedStyles } from '../shared/shared-styles';

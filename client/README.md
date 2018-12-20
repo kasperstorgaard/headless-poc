@@ -2,10 +2,16 @@
 Renders the application through a set of pages and reusable components/styles.
 
 ## Setup ##
-Standard, just
+
+Before you install dependencies, you will also need to get a link to the server package, since the model types are defined there:
+Go to the server folder, then run `npm link`.
+Afterwards, go back to the client folder, and run `npm link headless-poc-server`.
+
+Then, you can install dependencies like normal:
 `npm install`
-and
-`npm start`
+
+To start the development task, run:
+```npm start```
 
 This will kick off a webpack task that bundles up scripts, which are then served by client.
 

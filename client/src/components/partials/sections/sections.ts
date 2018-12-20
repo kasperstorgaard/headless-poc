@@ -1,7 +1,5 @@
 import {LitElement, html, property} from '@polymer/lit-element';
-
-import {StepsSection} from '../../../../../server/src/content/models/steps-section';
-import {PromoSection} from '../../../../../server/src/content/models/promo-section';
+import {PromoSection, StepsSection} from 'headless-poc-server/dist/types';
 
 import './steps-section/steps-section';
 import './promo-section/promo-section';

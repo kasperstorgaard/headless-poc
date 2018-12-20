@@ -11,7 +11,11 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "typeRoots": [
+      "headless-poc-server/dist/types"
+    ]
   },
   "include": [
     "src/**/*.ts"

@@ -1,9 +1,14 @@
-import { LitElement, html, property } from '@polymer/lit-element';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+/// <reference types="headless-poc-server/dist/types/index">
+
+import {LitElement, html, property} from '@polymer/lit-element';
+import {connect} from 'pwa-helpers/connect-mixin.js';
+import {TemplateResult} from 'lit-html';
+
+import {Route as RouteItem} from 'headless-poc-server/dist/types';
 
 // The following line imports the type only - it will be removed by tsc so
 // another import for app-drawer.js is required below.
-import { AppDrawerElement } from '@polymer/app-layout/app-drawer/app-drawer.js';
+import {AppDrawerElement} from '@polymer/app-layout/app-drawer/app-drawer.js';
 
 // These are the elements needed by this element.
 import '@polymer/app-layout/app-drawer/app-drawer.js';
@@ -13,21 +18,47 @@ import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 
-import { store, RootState } from '../../../store';
-import { updateDrawerState } from '../../../actions/app';
+// import 'headless-poc-server/dist/types/index';
 
-import { menuIcon } from '../../shared/icons';
+import {store, RootState} from '../../../store';
+import {updateDrawerState} from '../../../actions/app';
+
+import {menuIcon} from '../../shared/icons';
 
 class Header extends connect(store)(LitElement) {
   protected render() {
-    const nav = (className: string) => html`
-    <nav class="${className}">
-      <a ?selected="${this._page === 'home'}" href="/">home</a>
-      <a ?selected="${this._page === 'page2'}" href="/page2">page Two</a>
-      <a ?selected="${this._page === 'page3'}" href="/page3">page Three</a>
-    </nav>`;
+    const renderRoute: (item: RouteItem, recursive?: boolean) => TemplateResult = (item, recursive = true) => html`
+      <a ?selected="${this._page === item.codename}" href="${item.url}">${item.name}</a>
+      ${recursive ? renderRoutes(item.routes) : html``}
+    `;
 
-    // Anything that's related to rendering should be done in here.
+    const renderRoutes: (items: RouteItem[]) => TemplateResult = items => {
+      if (items && items.length) {
+        return html`
+          <ul>
+            ${items.map(item => html`<li>${renderRoute(item)}</li>`)}
+          </ul>
+        `;
+      }
+      return html``;
+    }
+
+    const nav = (className: string) => {
+      if (!this._navigation) {
+        return html``;
+      }
+
+      const rootItem = {...this._navigation, routes: []};
+      const items = [rootItem, ...this._navigation.routes];
+
+      return html`
+      <nav class="${className}">
+        ${renderRoutes(items)}
+      </nav>
+      `;
+    };
+
+    // // Anything that's related to rendering should be done in here.
     return html`
     <link rel="stylesheet" href="static/components/partials/header/header.css">
 
@@ -55,6 +86,9 @@ class Header extends connect(store)(LitElement) {
   @property({type: String})
   private _page = '';
 
+  @property({type: String})
+  private _navigation: RouteItem | null = null;
+
   @property({type: Boolean})
   private _drawerOpened = false;
 
@@ -68,6 +102,7 @@ class Header extends connect(store)(LitElement) {
 
   stateChanged(state: RootState) {
     this._page = state.app!.page;
+    this._navigation = state.app!.navigation;
     this._drawerOpened = state.app!.drawerOpened;
   }
 }

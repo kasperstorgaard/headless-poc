@@ -1,17 +1,20 @@
-import { Reducer } from 'redux';
+import {Reducer} from 'redux';
+import {Route as RouteItem} from 'headless-poc-server/dist/types';
 
 import {
   UPDATE_PAGE,
   UPDATE_OFFLINE,
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
-  UPDATE_DRAWER_STATE
+  UPDATE_DRAWER_STATE,
+  UPDATE_NAVIGATION
 } from '../actions/app';
-import { RootAction } from '../store';
+import {RootAction} from '../store';
 
 export interface AppState {
   page: string;
   pageData: any;
+  navigation: RouteItem | null;
   offline: boolean;
   drawerOpened: boolean;
   snackbarOpened: boolean;
@@ -20,6 +23,7 @@ export interface AppState {
 const INITIAL_STATE: AppState = {
   page: '',
   pageData: {},
+  navigation: null,
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
@@ -32,6 +36,11 @@ const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action: any) 
         ...state,
         page: action.page,
         pageData: action.data
+      };
+    case UPDATE_NAVIGATION:
+      return {
+        ...state,
+        navigation: action.data
       };
     case UPDATE_OFFLINE:
       return {

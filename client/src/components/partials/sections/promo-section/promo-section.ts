@@ -1,6 +1,6 @@
 import {LitElement, html, property} from '@polymer/lit-element';
 
-import {PromoSection as PromoSectionItem} from '../../../../../../server/src/content/models/promo-section';
+import {PromoSection as PromoSectionItem} from 'headless-poc-server/dist/types';
 
 class PromoSection extends LitElement {
   @property({type: Object})

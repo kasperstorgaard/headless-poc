@@ -8,9 +8,11 @@
     "clean": "rimraf ./dist && mkdirp public/js",
     "dev:styles": "node ./build-styles --watch",
     "dev:js": "NODE_ENV='development' webpack --watch",
+    "dev:types": "cpx \"../server/dist/types/**.d.ts\" \"dist/types/server\" --watch",
     "dev": "run-s clean && run-p dev:*",
     "prod:js": "NODE_ENV='production' rollup -c",
     "prod:styles": "node ./build-styles",
+    "prod:types": "cpx \"../server/dist/types\" \"dist/types/server\"",
     "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +20,8 @@
   "license": "ISC",
   "devDependencies": {
     "chokidar": "^2.0.4",
+    "cpx": "^1.5.0",
+    "headless-poc-server": "^0.1.0",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.6",
