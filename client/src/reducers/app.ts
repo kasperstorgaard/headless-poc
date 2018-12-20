@@ -1,5 +1,5 @@
 import {Reducer} from 'redux';
-import {Route as RouteItem} from 'headless-poc-server/dist/types';
+import {Nav as NavItem} from 'headless-poc-server/dist/types';
 
 import {
   UPDATE_PAGE,
@@ -14,7 +14,7 @@ import {RootAction} from '../store';
 export interface AppState {
   page: string;
   pageData: any;
-  navigation: RouteItem | null;
+  navigation: NavItem | null;
   offline: boolean;
   drawerOpened: boolean;
   snackbarOpened: boolean;

@@ -1,4 +1,23 @@
-import {ProductGroupItem} from './product-group';
-import {PickABoxItem} from './pick-a-box';
+import {ContentItem} from 'kentico-cloud-delivery';
 
-export type PageItem = ProductGroupItem | PickABoxItem;
+import {Page} from '../models';
+import {ContentResolver} from './base';
+import {MetadataItem} from './metadata';
+
+export class PageItem extends MetadataItem
+  implements ContentResolver<Page> {
+  static type = 'page';
+
+  content: ContentItem[];
+
+  toModel(): Page {
+    const base = super.toModel();
+
+    return {
+      ...base,
+      type: 'page',
+      content: (this.content || []).map(content => content.toModel()),
+      headline: this.headline ? this.headline.text : ''
+    };
+  }
+}

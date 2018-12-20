@@ -1,12 +1,12 @@
 import {LitElement, html, property} from '@polymer/lit-element';
-import {StepsSection as StepsSectionItem} from 'headless-poc-server/dist/types';
+import {Steps} from 'headless-poc-server/dist/types';
 
 class StepsSection extends LitElement {
   @property({type: String})
   theme: string = 'primary';
 
   @property({type: Object})
-  item: StepsSectionItem|null = null;
+  item: Steps|null = null;
 
   protected render() {
     if (!this.item) {
@@ -56,7 +56,7 @@ class StepsSection extends LitElement {
         </li>
         `)}
       </ul>
-      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.text}</a>
+      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.title}</a>
     </section>`;
   }
 }

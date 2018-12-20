@@ -1,5 +1,8 @@
-import {Home} from './home';
-import {ProductGroup} from './product-group';
-import {PickABox} from './pick-a-box';
+import {Metadata} from './metadata';
 
-export type Page = Home | ProductGroup | PickABox;
+export class Page {
+  type: 'page';
+  headline: string;
+  content: any[];
+  metadata: Metadata;
+}

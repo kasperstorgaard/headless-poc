@@ -4,7 +4,7 @@ import {LitElement, html, property} from '@polymer/lit-element';
 import {connect} from 'pwa-helpers/connect-mixin.js';
 import {TemplateResult} from 'lit-html';
 
-import {Route as RouteItem} from 'headless-poc-server/dist/types';
+import {Nav as NavItem} from 'headless-poc-server/dist/types';
 
 // The following line imports the type only - it will be removed by tsc so
 // another import for app-drawer.js is required below.
@@ -27,12 +27,12 @@ import {menuIcon} from '../../shared/icons';
 
 class Header extends connect(store)(LitElement) {
   protected render() {
-    const renderRoute: (item: RouteItem, recursive?: boolean) => TemplateResult = (item, recursive = true) => html`
+    const renderRoute: (item: NavItem, recursive?: boolean) => TemplateResult = (item, recursive = true) => html`
       <a ?selected="${this._page === item.codename}" href="${item.url}">${item.name}</a>
       ${recursive ? renderRoutes(item.routes) : html``}
     `;
 
-    const renderRoutes: (items: RouteItem[]) => TemplateResult = items => {
+    const renderRoutes: (items: NavItem[]) => TemplateResult = items => {
       if (items && items.length) {
         return html`
           <ul>
@@ -49,7 +49,10 @@ class Header extends connect(store)(LitElement) {
       }
 
       const rootItem = {...this._navigation, routes: []};
-      const items = [rootItem, ...this._navigation.routes];
+      const items = [
+        rootItem,
+        ...this._navigation.routes.filter(route => !route.hideFromMenu)
+      ];
 
       return html`
       <nav class="${className}">
@@ -87,7 +90,7 @@ class Header extends connect(store)(LitElement) {
   private _page = '';
 
   @property({type: String})
-  private _navigation: RouteItem | null = null;
+  private _navigation: NavItem | null = null;
 
   @property({type: Boolean})
   private _drawerOpened = false;

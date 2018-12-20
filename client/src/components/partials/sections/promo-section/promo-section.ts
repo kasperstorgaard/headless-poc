@@ -1,10 +1,10 @@
 import {LitElement, html, property} from '@polymer/lit-element';
 
-import {PromoSection as PromoSectionItem} from 'headless-poc-server/dist/types';
+import {Promo as PromoItem} from 'headless-poc-server/dist/types';
 
 class PromoSection extends LitElement {
   @property({type: Object})
-  item: PromoSectionItem|null = null;
+  item: PromoItem|null = null;
 
   @property({type: String})
   theme: string = 'secondary';
@@ -33,7 +33,7 @@ class PromoSection extends LitElement {
     <section class="sif-section theme-${this.theme}" style="background-image: url(${this.item.backgroundImage})">
       <h1 class="sif-section-headline headline">${this.item.headline}</h1>
       <p class="body">${this.item.body}</p>
-      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.text}</a>
+      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.title}</a>
     </section>`;
   }
 }

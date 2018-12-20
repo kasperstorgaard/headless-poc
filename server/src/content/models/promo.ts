@@ -1,10 +1,10 @@
+import {CTA} from './cta';
 import {Model} from './base';
-import {Link} from './link';
 
-export interface PromoSection extends Model {
+export interface Promo extends Model {
+  cta: CTA;
   backgroundImage: string;
   headline: string;
   name: string;
   body: string;
-  cta: Link;
 }

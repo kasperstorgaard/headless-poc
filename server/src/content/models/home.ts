@@ -1,9 +1,9 @@
-import {PromoSection} from './promo-section';
-import {StepsSection} from './steps-section';
+import {Promo} from './promo';
+import {Steps} from './steps';
 import {PageBase} from './base';
 
-export type HomeSection = PromoSection|StepsSection;
+export type HomeSection = Promo|Steps;
 
 export interface Home extends PageBase {
-  sections: (PromoSection|StepsSection)[];
+  sections: (Promo|Steps)[];
 }

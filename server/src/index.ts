@@ -7,8 +7,7 @@ import cookieParser from 'cookie-parser';
 import chalk from 'chalk';
 import logger from 'morgan';
 
-import {updateNavigation} from './content/navigation';
-import {routes} from './api';
+import {routes, warmup} from './api';
 
 const port = 3000;
 const app = express();
@@ -32,11 +31,11 @@ app.get('**', async (_req, res) => res.render('index'));
 spdy
   .createServer(options, app)
   .listen(port, () => {
-    updateNavigation('default');
-
     console.log(chalk.magenta([
       '┌-----------------------------┐',
       `| App listening on port: ${port} |`,
       '└-----------------------------┘'
     ].join('\n')));
+
+    warmup(['default']);
   });

@@ -1,10 +1,10 @@
 import {Model} from './base';
 import {Step} from './step';
-import {Link} from './link';
+import {CTA} from './cta';
 
-export interface StepsSection extends Model {
+export interface Steps extends Model {
   headline: string;
   name: string;
-  cta: Link;
+  cta: CTA;
   steps: Step[];
 }
