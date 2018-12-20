@@ -1,63 +1,34 @@
-import {forkJoin, Observable, of} from 'rxjs';
+import {Router} from 'express';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
 
-import {ProductGroup, Home, Page, PickABox} from '../types';
-import getHomePage from './pages/home';
-import getProductsPage from './pages/products';
-import {map} from 'rxjs/operators';
+import {RouteItem, HomeItem} from '../content/resolvers';
+import {client} from '../content/cms-client';
+import {Route} from '../content/models/route';
 
-export interface NavigationItem {
-  name: string;
-  url: string;
-  items: NavigationItem[];
+export const routes = Router();
+
+routes.get('**', async (_req, res) => {
+  const routeTree = await getRouteTree('default').toPromise();
+  res.json({routeTree});
+})
+
+const localesLookup: {[key:string]: Observable<Route>} = {};
+
+export function getRouteTree(language = 'default', update = false) {
+  if (!localesLookup[language] || update) {
+    localesLookup[language] = getRootRouteItem(language);
+  }
+  return localesLookup[language];
 }
 
-let navigation$: Observable<NavigationItem[]>;
-
-export function getNavigation(): Observable<NavigationItem[]> {
-  if (!navigation$) {
-    navigation$ = forkJoin([
-      getHomePage(),
-      getProductsPage()
-    ])
-    .pipe(map(pages => pages.map(page => buildNavigationItem(page))));
-  }
-
-  return navigation$;
-}
-
-export function getUrlSegments(classOrInstance: any): Observable<string[]> {
-  if (classOrInstance === Home || classOrInstance instanceof Home) {
-    return of(['/']);
-  }
-
-  if (classOrInstance === ProductGroup || classOrInstance instanceof ProductGroup) {
-    return getProductsPage()
-      .pipe(map(products => [products.url.value]));
-  }
-
-  if (classOrInstance instanceof PickABox) {
-    return getUrlSegments(ProductGroup)
-      .pipe(map(segments => segments.concat([classOrInstance.url.value])));
-  }
-}
-
-function buildNavigationItem(page: Page): NavigationItem {
-  const name = page.name ? page.name.text : '';
-  let url = '/';
-  let items: NavigationItem[] = [];
-
-  if (!(page instanceof Home) && page.url) {
-    url = page.url.value;
-    items = getSubPages(page).map(subPage => buildNavigationItem(subPage));
-  }
-
-  return {url, name, items};
-}
-
-function getSubPages(page: Page) {
-  if (page instanceof ProductGroup) {
-    return page.products;
-  }
-
-  return [];
+function getRootRouteItem(language = 'default'): Observable<Route> {
+  return client.item<RouteItem>('root_route')
+    .languageParameter(language)
+    .depthParameter(10)
+    .getObservable()
+    .pipe(
+      map(response => response.item.toModel()),
+      shareReplay(1)
+    );
 }

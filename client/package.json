@@ -4,20 +4,41 @@
   "description": "All the layout, styles, components for the application",
   "main": "index.js",
   "scripts": {
+    "build": "run-s clean && run-p prod:*",
+    "clean": "rimraf ./dist && mkdirp public/js",
     "dev:styles": "node ./build-styles --watch",
-    "dev": "npm-run-all --parallel dev:*",
+    "dev:js": "NODE_ENV='development' webpack --watch",
+    "dev:types": "cpx \"../server/dist/types/**.d.ts\" \"dist/types/server\" --watch",
+    "dev": "run-s clean && run-p dev:*",
+    "prod:js": "NODE_ENV='production' rollup -c",
     "prod:styles": "node ./build-styles",
-    "start": "npm-run-all --sequential prod:styles",
+    "prod:types": "cpx \"../server/dist/types\" \"dist/types/server\"",
+    "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kasperstorgaard",
   "license": "ISC",
   "devDependencies": {
     "chokidar": "^2.0.4",
+    "cpx": "^1.5.0",
+    "headless-poc-server": "^0.1.0",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.6",
     "postcss-import": "^12.0.1",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "workbox-webpack-plugin": "^3.6.3",
     "yargs": "^12.0.5"
+  },
+  "dependencies": {
+    "@polymer/app-layout": "^3.0.2",
+    "@polymer/lit-element": "^0.6.4",
+    "@polymer/polymer": "^3.1.0",
+    "pwa-helpers": "^0.9.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }
