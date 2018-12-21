@@ -1,12 +1,12 @@
 import {LitElement, html, property} from '@polymer/lit-element';
-import {Steps} from 'headless-poc-server/dist/types';
+import {Steps as StepsModel} from 'headless-poc-server/dist/types';
 
-class StepsSection extends LitElement {
+class Steps extends LitElement {
   @property({type: String})
   theme: string = 'primary';
 
   @property({type: Object})
-  item: Steps|null = null;
+  item: StepsModel|null = null;
 
   protected render() {
     if (!this.item) {
@@ -61,4 +61,4 @@ class StepsSection extends LitElement {
   }
 }
 
-window.customElements.define('sif-steps-section', StepsSection);
+window.customElements.define('sif-steps', Steps);

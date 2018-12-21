@@ -47,16 +47,10 @@ const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch =>
 
   switch(page) {
     case 'home':
-      import('../components/pages/home').then(() => {
+      import('../components/pages/page').then(() => {
         // Put code in here that you want to run every time when
-        // navigating to home after home.js is loaded.
+        // navigating to home after page.js is loaded.
       });
-      break;
-    case 'page2':
-      import('../components/pages/page2');
-      break;
-    case 'page3':
-      import('../components/pages/page3');
       break;
     default:
       page = 'page404';
@@ -95,8 +89,7 @@ export const showSnackbar: ActionCreator<ThunkResult> = () => (dispatch) => {
     type: OPEN_SNACKBAR
   });
   window.clearTimeout(snackbarTimer);
-  snackbarTimer = window.setTimeout(() =>
-    dispatch({type: CLOSE_SNACKBAR}), 3000);
+  snackbarTimer = window.setTimeout(() => dispatch({type: CLOSE_SNACKBAR}), 3000);
 };
 
 export const updateOffline: ActionCreator<ThunkResult> = (offline: boolean) => (dispatch, getState) => {

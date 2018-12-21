@@ -1,10 +1,9 @@
 import {LitElement, html, property} from '@polymer/lit-element';
+import {Promo as PromoModel} from 'headless-poc-server/dist/types';
 
-import {Promo as PromoItem} from 'headless-poc-server/dist/types';
-
-class PromoSection extends LitElement {
+class Promo extends LitElement {
   @property({type: Object})
-  item: PromoItem|null = null;
+  item: PromoModel|null = null;
 
   @property({type: String})
   theme: string = 'secondary';
@@ -38,4 +37,4 @@ class PromoSection extends LitElement {
   }
 }
 
-window.customElements.define('sif-promo-section', PromoSection);
+window.customElements.define('sif-promo', Promo);

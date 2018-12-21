@@ -1,5 +1,6 @@
 import {ContentItem, Fields} from 'kentico-cloud-delivery';
 import {Metadata} from '../models/metadata';
+import {getImageUrl, getText} from './utils';
 
 export abstract class MetadataItem extends ContentItem {
   metadataOgTitle: Fields.TextField;
@@ -55,20 +56,20 @@ export abstract class MetadataItem extends ContentItem {
     return {
       metadata: {
         browser: {
-          title: this.metadataMetaTitle.text,
-          description: this.metadataMetaDescription.text
+          title: getText(this.metadataMetaTitle),
+          description: getText(this.metadataMetaDescription)
         },
         facebook: {
-          title: this.metadataOgTitle.text,
-          description: this.metadataOgDescription.text,
-          image: this.metadataOgImage.assets[0].url
+          title: getText(this.metadataOgTitle),
+          description: getText(this.metadataOgDescription),
+          image: getImageUrl(this.metadataOgImage.assets)
         },
         twitter: {
-          site: this.metadataTwitterSite.text,
-          creator: this.metadataTwitterCreator.text,
-          title: this.metadataTwitterTitle.text,
-          description: this.metadataTwitterDescription.text,
-          image: this.metadataTwitterImage.assets[0].url
+          site: getText(this.metadataTwitterSite),
+          creator: getText(this.metadataTwitterCreator),
+          title: getText(this.metadataTwitterTitle),
+          description: getText(this.metadataTwitterDescription),
+          image: getImageUrl(this.metadataTwitterImage.assets)
         }
       } as Metadata
     }

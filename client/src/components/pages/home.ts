@@ -3,7 +3,7 @@ import {connect} from 'pwa-helpers/connect-mixin';
 
 import {Home as HomeItem} from 'headless-poc-server/dist/types';
 
-import '../../components/partials/sections/sections';
+import '../../components/content/content';
 import {store, RootState} from '../../store';
 import {PageViewElement} from '../shared/page-view-element';
 
@@ -21,7 +21,7 @@ class Home extends connect(store)(PageViewElement) {
     return html`
       ${SharedStyles}
       ${sections.map(section => html`
-        <sif-sections .item="${section}"></sif-sections>
+        <sif-content .item="${section}"></sif-content>
       `)}
     `;
   }
