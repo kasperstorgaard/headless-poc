@@ -3,6 +3,7 @@ import {ContentItem} from 'kentico-cloud-delivery';
 import {Page} from '../models';
 import {ContentResolver} from './base';
 import {MetadataItem} from './metadata';
+import {getText} from './utils';
 
 export class PageItem extends MetadataItem
   implements ContentResolver<Page> {
@@ -17,7 +18,7 @@ export class PageItem extends MetadataItem
       ...base,
       type: 'page',
       content: (this.content || []).map(content => content.toModel()),
-      headline: this.headline ? this.headline.text : ''
+      headline: getText(this.headline)
     };
   }
 }

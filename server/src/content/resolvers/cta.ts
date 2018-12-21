@@ -3,6 +3,7 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 import {CTA} from '../models/cta';
 import {RouteItem} from './route';
 import {getUrlSync} from '../../api/navigation';
+import {getText} from './utils';
 
 export abstract class CTAItem extends ContentItem {
   ctaCtaTarget: RouteItem[];
@@ -28,7 +29,7 @@ export abstract class CTAItem extends ContentItem {
 
     return {
       cta: {
-        title: this.ctaCtaTitle.text,
+        title: getText(this.ctaCtaTitle),
         url
       } as CTA
     }

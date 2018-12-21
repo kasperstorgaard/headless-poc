@@ -2,6 +2,7 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 
 import {Step} from '../models';
 import {ContentResolver} from './base';
+import {getText, getImageUrl} from './utils';
 
 export class StepItem extends ContentItem
   implements ContentResolver<Step> {
@@ -24,15 +25,13 @@ export class StepItem extends ContentItem
   }
 
   toModel(): Step {
-    const illustrationThumbnail = this.illustrationThumbnail.assets[0];
-    const image = this.image.assets[0];
     return {
       type: 'step',
-      illustrationThumbnail: illustrationThumbnail ? illustrationThumbnail.url : '',
-      headline: this.headline.text,
-      description: this.description.text,
-      image: image ? image.url : '',
-      summary: this.summary.text
+      illustrationThumbnail: getImageUrl(this.illustrationThumbnail),
+      headline: getText(this.headline),
+      description: getText(this.description),
+      image: getImageUrl(this.image),
+      summary: getText(this.summary)
     };
   }
 }

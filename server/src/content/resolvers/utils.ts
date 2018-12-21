@@ -1,6 +1,7 @@
 import {FieldModels, Fields} from 'kentico-cloud-delivery';
 
-export function getImageUrl(assets: FieldModels.AssetModel[]) {
+export function getImageUrl(field: Fields.AssetsField) {
+  const assets = field && field.assets;
   if (!assets || !assets.length) {
     return '';
   }

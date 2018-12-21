@@ -3,6 +3,7 @@ import {ContentItem, Fields} from 'kentico-cloud-delivery';
 import {PageItem} from './page';
 import {Route} from '../models/route';
 import {Nav} from '../models/nav';
+import {getText} from './utils';
 
 export class RouteItem extends ContentItem {
   static type = 'route';
@@ -17,7 +18,7 @@ export class RouteItem extends ContentItem {
     const page = this.pages && this.pages.length ? getPage(this.pages[0]) : null;
 
     const route = {
-      name: this.name.text,
+      name: getText(this.name),
       codename: this.system.codename,
       url: getUrl(this, parent),
       routes: [],

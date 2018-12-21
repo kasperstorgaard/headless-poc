@@ -62,14 +62,14 @@ export abstract class MetadataItem extends ContentItem {
         facebook: {
           title: getText(this.metadataOgTitle),
           description: getText(this.metadataOgDescription),
-          image: getImageUrl(this.metadataOgImage.assets)
+          image: getImageUrl(this.metadataOgImage)
         },
         twitter: {
           site: getText(this.metadataTwitterSite),
           creator: getText(this.metadataTwitterCreator),
           title: getText(this.metadataTwitterTitle),
           description: getText(this.metadataTwitterDescription),
-          image: getImageUrl(this.metadataTwitterImage.assets)
+          image: getImageUrl(this.metadataTwitterImage)
         }
       } as Metadata
     }

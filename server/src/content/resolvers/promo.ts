@@ -3,6 +3,7 @@ import {Fields} from 'kentico-cloud-delivery';
 import {Promo} from '../models';
 import {ContentResolver} from './base';
 import {CTAItem} from './cta';
+import {getText, getImageUrl} from './utils';
 
 export class PromoItem extends CTAItem
   implements ContentResolver<Promo> {
@@ -30,15 +31,14 @@ export class PromoItem extends CTAItem
 
   public toModel(): Promo {
     const base = super.toModel();
-    const assets = this.backgroundImage && this.backgroundImage.assets || [];
 
     return {
       ...base,
       type: 'promo',
-      backgroundImage: assets.length ? assets[0].url : '',
-      headline: this.headline ? this.headline.text : '',
-      name: this.name ? this.name.text : '',
-      body: this.body ? this.body.text : ''
+      backgroundImage: getImageUrl(this.backgroundImage),
+      headline: getText(this.headline),
+      name: getText(this.name),
+      body: getText(this.body)
     };
   }
 }

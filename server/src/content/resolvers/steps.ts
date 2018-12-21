@@ -4,6 +4,7 @@ import {Steps} from '../models';
 import {StepItem} from './step';
 import {ContentResolver} from './base';
 import {CTAItem} from './cta';
+import {getText} from './utils';
 
 export class StepsItem extends CTAItem
   implements ContentResolver<Steps> {
@@ -31,8 +32,8 @@ export class StepsItem extends CTAItem
     return {
       ...base,
       type: 'steps',
-      headline: this.headline.text,
-      name: this.name.text,
+      headline: getText(this.headline),
+      name: getText(this.name),
       steps: this.steps.map(step => step.toModel())
     }
   }
