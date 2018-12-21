@@ -1,4 +1,3 @@
-export * from './home';
 export * from './nav';
 export * from './page';
 export * from './promo';
