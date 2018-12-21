@@ -12,9 +12,7 @@ class Page extends connect(store)(PageViewElement) {
   private _pageData: PageModel | null = null;
 
   protected render() {
-    console.log('rendering?');
     const content = this._pageData && this._pageData.content || [];
-    console.log({content});
 
     return html`
       ${content.map(item => html`<sif-content .item="${item}"></sif-content>`)}
