@@ -6,14 +6,18 @@ import {store, RootState} from '../../../store';
 
 class Main extends connect(store)(LitElement) {
   protected render() {
+    const pageActive = !['404', 'catalogue'].includes(this._page);
+
     // Anything that's related to rendering should be done in here.
     return html`
     <link rel="stylesheet" href="static/components/partials/main/main.css">
 
+
     <!-- Main content -->
     <main role="main" class="main-content">
-      <sif-page class="page" ?active="${this._page !== 'page404'}"></sif-page>
-      <sif-page404 class="page" ?active="${this._page === 'page404'}"></sif-page404>
+      <sif-page class="page" ?active="${pageActive}"></sif-page>
+      <sif-catalogue class="page" ?active="${this._page === 'catalogue'}"></sif-catalogue>
+      <sif-page404 class="page" ?active="${this._page === '404'}"></sif-page404>
     </main>`;
   }
 

@@ -43,25 +43,21 @@ export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch =
 };
 
 const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch => {
-  const pageResponse = fetch(`/api/route/${page}`);
-
-  switch(page) {
-    case 'home':
-      import('../components/pages/page').then(() => {
-        // Put code in here that you want to run every time when
-        // navigating to home after page.js is loaded.
-      });
-      break;
-    default:
-      page = 'page404';
-      import('../components/pages/page-404');
+  if (page === 'catalogue') {
+      page = 'catalogue';
+      import('../components/pages/catalogue');
+      dispatch(updatePage(page, null));
+      return;
   }
+
+  const pageResponse = fetch(`/api/route/${page}`);
+  import('../components/pages/page');
 
   try {
     const data = (await pageResponse).json();
     dispatch(updatePage(page, await data));
   } catch(error) {
-    page = 'page404';
+    page = '404';
     import('../components/pages/page-404');
     dispatch(updatePage(page, null));
   }
