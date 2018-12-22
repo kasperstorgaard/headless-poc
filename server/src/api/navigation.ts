@@ -9,9 +9,7 @@ import {Nav} from '../content/models/nav';
 export const routes = Router();
 
 routes.get('**', async (_req, res) => {
-  console.log('--- before ---');
   const routeTree = await getRouteTree('default').toPromise()
-  console.log('--- after ---');
   res.json({routeTree});
 })
 
