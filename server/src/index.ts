@@ -8,7 +8,6 @@ import chalk from 'chalk';
 import logger from 'morgan';
 
 import {routes, warmup} from './api';
-import {ReplaySubject} from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 
 const port = 3000;
@@ -37,11 +36,10 @@ app.get('**', async (_req, res) => {
 
 spdy
   .createServer(options, app)
-  .listen(port, () => {
+  .listen(port, () => 
     console.log(chalk.magenta([
       '┌-----------------------------┐',
       `| App listening on port: ${port} |`,
       '└-----------------------------┘'
-    ].join('\n')));
-
-  });
+    ].join('\n')))
+  );
