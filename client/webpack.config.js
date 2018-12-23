@@ -1,5 +1,6 @@
 const path = require('path');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -31,6 +32,9 @@ module.exports = {
     new WorkboxPlugin.InjectManifest({
       swSrc: './src/service-worker.js',
       swDest: 'service-worker.js'
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development'
     })
   ]
 }

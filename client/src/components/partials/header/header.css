@@ -61,20 +61,39 @@ app-header {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 24px;
+  padding: 24px 0;
   background: var(--app-drawer-background-color);
   position: relative;
 }
 
 .drawer-list ul,
 .drawer-list li {
-  list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-.drawer-list a,
-.drawer-list .group {
+.drawer-list ul li:last-child a {
+  padding-bottom: 8px;
+}
+
+.drawer-list ul li:first-child a {
+  padding-top: 8px;
+}
+
+.drawer-list ul.catalogue {
+  --app-drawer-background-color: var(--color-brand);
+  --app-drawer-text-color: black;
+  --app-drawer-selected-color: rgba(0,0,0,0.8);
+  background: var(--app-drawer-background-color);
+}
+
+.drawer-list ul,
+.drawer-list li {
+  list-style-type: none;
+  margin: 0;
+}
+
+.drawer-list a {
   display: block;
   text-decoration: none;
   color: var(--app-drawer-text-color);
@@ -82,8 +101,7 @@ app-header {
   padding: 0 24px;
 }
 
-.drawer-list a[selected],
-.drawer-list .group[selected] {
+.drawer-list a[selected] {
   color: var(--app-drawer-selected-color);
 }
 

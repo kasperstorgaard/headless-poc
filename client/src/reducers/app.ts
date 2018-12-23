@@ -12,9 +12,10 @@ import {
 import {RootAction} from '../store';
 
 export interface AppState {
+  pathName: string;
   page: string;
   pageData: any;
-  navigation: NavItem | null;
+  navigation: NavItem[];
   offline: boolean;
   drawerOpened: boolean;
   snackbarOpened: boolean;
@@ -22,8 +23,9 @@ export interface AppState {
 
 const INITIAL_STATE: AppState = {
   page: '',
+  pathName: '',
   pageData: {},
-  navigation: null,
+  navigation: [],
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
@@ -35,6 +37,7 @@ const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action: any) 
       return {
         ...state,
         page: action.page,
+        pathName: action.pathName,
         pageData: action.data
       };
     case UPDATE_NAVIGATION:

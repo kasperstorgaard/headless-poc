@@ -30,14 +30,16 @@ export class RouteItem extends ContentItem {
 
   toNav(parent?: Route): Nav {
     const model = this.toModel(parent);
-    const url = !model.page ? null : model.url;
     
     return {
       name: model.name,
       hideFromMenu: getHideFromMenu(this),
+      group: model.group || '',
       codename: model.codename,
-      url,
-      routes: this.routes.map(subroute => subroute.toNav(model))
+      url: model.url,
+      routes: this.routes
+        .map(subroute => subroute.toNav(model))
+        .filter(subroute => !subroute.hideFromMenu)
     };
   }
 }

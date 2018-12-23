@@ -16,7 +16,7 @@ class Main extends connect(store)(LitElement) {
     <!-- Main content -->
     <main role="main" class="main-content">
       <sif-page class="page" ?active="${pageActive}"></sif-page>
-      <sif-catalogue class="page" ?active="${/catalogue\/?/.test(this._page)}"></sif-catalogue>
+      <sif-catalogue class="page" ?active="${/catalogue\/?/.test(this._pathName)}"></sif-catalogue>
       <sif-page404 class="page" ?active="${this._page === '404'}"></sif-page404>
     </main>`;
   }
@@ -27,8 +27,12 @@ class Main extends connect(store)(LitElement) {
   @property({type: String})
   private _page = '';
 
+  @property({type: String})
+  private _pathName = '';
+
   stateChanged(state: RootState) {
     this._page = state.app!.page;
+    this._pathName = state.app!.pathName;
   }
 }
 

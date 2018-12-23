@@ -10,7 +10,7 @@ export const routes = Router();
 
 routes.get('**', async (_req, res) => {
   const routeTree = await getRouteTree('default').toPromise()
-  res.json({routeTree});
+  res.json(routeTree);
 })
 
 const navLookup: {[key: string]: Nav|null} = {};

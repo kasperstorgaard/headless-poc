@@ -1,9 +1,6 @@
-/// <reference types="headless-poc-server/dist/types/index">
-
 import {LitElement, html, property} from '@polymer/lit-element';
 import {connect} from 'pwa-helpers/connect-mixin.js';
 import {TemplateResult} from 'lit-html';
-
 import {Nav as NavItem} from 'headless-poc-server/dist/types';
 
 // The following line imports the type only - it will be removed by tsc so
@@ -27,44 +24,7 @@ import {menuIcon} from '../../shared/icons';
 
 class Header extends connect(store)(LitElement) {
   protected render() {
-    const renderRoute: (item: NavItem, recursive?: boolean) => TemplateResult = (item, recursive = true) => html`
-      ${item.url ?
-        html`<a ?selected="${this._page.includes(item.codename)}" href="${item.url}">${item.name}</a>` :
-        html`<div class="group" ?selected="${this._page.includes(item.codename)}">${item.name}</div>`
-      }
-      ${recursive ? renderRoutes(item.routes) : html``}
-    `;
-
-    const renderRoutes: (items: NavItem[]) => TemplateResult = items => {
-      if (items && items.length) {
-        return html`
-          <ul>
-            ${items.map(item => html`<li>${renderRoute(item)}</li>`)}
-          </ul>
-        `;
-      }
-      return html``;
-    }
-
-    const nav = (className: string) => {
-      if (!this._navigation) {
-        return html``;
-      }
-
-      const rootItem = {...this._navigation, routes: []};
-      const items = [
-        rootItem,
-        ...this._navigation.routes.filter(route => !route.hideFromMenu)
-      ];
-
-      return html`
-      <nav class="${className}">
-        ${renderRoutes(items)}
-      </nav>
-      `;
-    };
-
-    // // Anything that's related to rendering should be done in here.
+    // Anything that's related to rendering should be done in here.
     return html`
     <link rel="stylesheet" href="static/components/partials/header/header.css">
 
@@ -76,13 +36,17 @@ class Header extends connect(store)(LitElement) {
       </app-toolbar>
 
       <!-- This gets hidden on a small screen-->
-      ${nav('toolbar-list')}
+      <nav class="toolbar-list">
+        ${renderRoutes(this._pathName, this._navigation)}
+      </nav>
     </app-header>
  
     <!-- Drawer content -->
     <app-drawer .opened="${this._drawerOpened}"
         @opened-changed="${this._drawerOpenedChanged}">
-      ${nav('drawer-list')}
+      <nav class="drawer-list">
+        ${renderRoutes(this._pathName, this._navigation)}
+      </nav>
     </app-drawer>`;
   }
 
@@ -90,10 +54,10 @@ class Header extends connect(store)(LitElement) {
   appTitle = '';
 
   @property({type: String})
-  private _page = '';
+  private _pathName = '';
 
   @property({type: String})
-  private _navigation: NavItem | null = null;
+  private _navigation: NavItem[];
 
   @property({type: Boolean})
   private _drawerOpened = false;
@@ -107,10 +71,41 @@ class Header extends connect(store)(LitElement) {
   }
 
   stateChanged(state: RootState) {
-    this._page = state.app!.page;
+    this._pathName = state.app!.pathName;
     this._navigation = state.app!.navigation;
     this._drawerOpened = state.app!.drawerOpened;
   }
 }
 
 window.customElements.define('sif-header', Header);
+
+function renderRoute (pathName: string, item: NavItem, recursive = true): TemplateResult {
+  const selected = !item.url || item.url.length < 2 ? pathName === 'home' :
+    pathName.startsWith((item.url || '').slice(1));
+
+    return html`<a ?selected="${selected}" href="${item.url}">${item.name}</a>
+      ${recursive ? renderRoutes(pathName, item.routes) : html``}
+    `;
+}
+
+function renderRoutes (page: string, items: NavItem[]): TemplateResult {
+  if (items && items.length) {
+    const groupLookup = items.reduce((acc, item) => {
+      const key = item.group || '';
+      acc[key] = acc[key] || {name: key, items: []};
+      acc[key].items.push(item);
+      return acc;
+    }, {} as {[key: string]: {name: string, items: NavItem[]}});
+
+    const groups = Object.keys(groupLookup).map(key => groupLookup[key]);
+    
+    return html`
+      ${groups.map(({name, items}) => html`
+      <ul class=${name}>
+        ${items.map(item => html`<li>${renderRoute(page, item)}</li>`)}
+      </ul>
+      `)}
+    `;
+  }
+  return html``;
+}
