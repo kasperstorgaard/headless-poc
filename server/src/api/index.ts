@@ -12,5 +12,5 @@ routes.use('/route', routeRoutes);
 routes.use('/navigation', navigationRoutes);
 
 export function warmup(languages: string[]) {
-  warmupNavigation(languages);
+  return warmupNavigation(languages);
 }

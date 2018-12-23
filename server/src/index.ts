@@ -8,6 +8,8 @@ import chalk from 'chalk';
 import logger from 'morgan';
 
 import {routes, warmup} from './api';
+import {ReplaySubject} from 'rxjs';
+import {shareReplay} from 'rxjs/operators';
 
 const port = 3000;
 const app = express();
@@ -26,7 +28,12 @@ app.use(cookieParser());
 app.use('/static', express.static(join(__dirname, 'static'), {}));
 app.use('/api', routes);
 
-app.get('**', async (_req, res) => res.render('index'));
+const ready = warmup(['default']).pipe(shareReplay(1));
+
+app.get('**', async (_req, res) => {
+  await ready.toPromise();
+  res.render('index')
+});
 
 spdy
   .createServer(options, app)
@@ -37,5 +44,4 @@ spdy
       '└-----------------------------┘'
     ].join('\n')));
 
-    warmup(['default']);
   });

@@ -73,7 +73,8 @@ app-header {
   padding: 0;
 }
 
-.drawer-list a {
+.drawer-list a,
+.drawer-list .group {
   display: block;
   text-decoration: none;
   color: var(--app-drawer-text-color);
@@ -81,7 +82,8 @@ app-header {
   padding: 0 24px;
 }
 
-.drawer-list a[selected] {
+.drawer-list a[selected],
+.drawer-list .group[selected] {
   color: var(--app-drawer-selected-color);
 }
 

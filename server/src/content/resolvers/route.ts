@@ -15,7 +15,7 @@ export class RouteItem extends ContentItem {
   options: Fields.MultipleChoiceField;
 
   toModel(parent?: Route): Route {
-    const page = this.pages && this.pages.length ? getPage(this.pages[0]) : null;
+    const page = this.page && this.page.length ? getPage(this.page[0]) : null;
 
     const route = {
       name: getText(this.name),
@@ -30,19 +30,20 @@ export class RouteItem extends ContentItem {
 
   toNav(parent?: Route): Nav {
     const model = this.toModel(parent);
+    const url = !model.page ? null : model.url;
     
     return {
       name: model.name,
       hideFromMenu: getHideFromMenu(this),
       codename: model.codename,
-      url: model.url,
+      url,
       routes: this.routes.map(subroute => subroute.toNav(model))
     };
   }
 }
 
 function getPage(page: PageItem) {
-  return page && page.toModel || page;
+  return (page && page.toModel()) || null;
 }
 
 function getUrl(route: RouteItem, parent?: Route|Nav): string {

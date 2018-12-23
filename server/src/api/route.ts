@@ -47,7 +47,7 @@ async function getItem(parts: string[]) {
       return candidates.find(candidate => candidate != null);
     }
 
-    return response.items[0];
+    return response.items[0].page[0];
 }
 
 async function getParentMatch(child: RouteItem, url: string): Promise<RouteItem | null> {

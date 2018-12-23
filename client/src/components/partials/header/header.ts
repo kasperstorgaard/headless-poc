@@ -28,7 +28,10 @@ import {menuIcon} from '../../shared/icons';
 class Header extends connect(store)(LitElement) {
   protected render() {
     const renderRoute: (item: NavItem, recursive?: boolean) => TemplateResult = (item, recursive = true) => html`
-      <a ?selected="${this._page === item.codename}" href="${item.url}">${item.name}</a>
+      ${item.url ?
+        html`<a ?selected="${this._page.includes(item.codename)}" href="${item.url}">${item.name}</a>` :
+        html`<div class="group" ?selected="${this._page.includes(item.codename)}">${item.name}</div>`
+      }
       ${recursive ? renderRoutes(item.routes) : html``}
     `;
 

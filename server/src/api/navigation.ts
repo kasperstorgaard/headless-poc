@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import {Observable, Subject, of, ReplaySubject} from 'rxjs';
-import {map, shareReplay, switchMap, tap, takeUntil, filter} from 'rxjs/operators';
+import {Observable, of, forkJoin} from 'rxjs';
+import {map, shareReplay, tap} from 'rxjs/operators';
 
 import {RouteItem} from '../content/resolvers';
 import {client} from '../content/cms-client';
@@ -41,7 +41,7 @@ export function getUrlSync(codename: string, language?: string) {
 }
 
 export function warmup(languages: string[]) {
-  return Promise.all(languages.map(language => getRouteTree(language).toPromise()));
+  return forkJoin(languages.map(language => getRouteTree(language)));
 }
 
 function getItemUrl(nav: Nav, codename: string): string|null {
