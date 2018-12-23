@@ -6,7 +6,7 @@ import {Nav as NavItem} from 'headless-poc-server/dist/types';
 declare const process: any;
 
 import {RootState} from '../store';
-import {getCatalogueNav} from '../services/catalogue.service';
+import {getCatalogueNav} from '../services/catalogue-service';
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const UPDATE_NAVIGATION = 'UPDATE_NAVIGATION';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
@@ -53,7 +53,7 @@ export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch =
 
 const loadPage: ActionCreator<ThunkResult> = (pathName: string) => async dispatch => {
   if (/catalogue\/?/.test(pathName)) {
-      import('../components/pages/catalogue');
+      import('../components/pages/catalogue/catalogue');
       dispatch(updatePage('catalogue', pathName, null));
       return;
   }

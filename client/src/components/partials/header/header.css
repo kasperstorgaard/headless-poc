@@ -43,6 +43,15 @@ app-header {
   padding: 4px 24px;
 }
 
+.toolbar-list ul {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.toolbar-list li, ul {
+  display: inline-block;
+}
+
 .toolbar-list a[selected] {
   color: var(--app-header-selected-color);
   border-bottom: 4px solid var(--app-header-selected-color);
@@ -68,21 +77,26 @@ app-header {
 
 .drawer-list ul,
 .drawer-list li {
+  box-sizing: border-box;
+  width: 100%;
   padding: 0;
   margin: 0;
 }
 
-.drawer-list ul li:last-child a {
-  padding-bottom: 8px;
+.drawer-list li:first-child {
+  padding-top: 4px;
 }
 
-.drawer-list ul li:first-child a {
-  padding-top: 8px;
+.drawer-list li:last-child {
+  padding-bottom: 4px;
+}
+
+.drawer-list ul ul li {
+  padding-left: 12px;
 }
 
 .drawer-list ul.catalogue {
   --app-drawer-background-color: var(--color-brand);
-  --app-drawer-text-color: black;
   --app-drawer-selected-color: rgba(0,0,0,0.8);
   background: var(--app-drawer-background-color);
 }
