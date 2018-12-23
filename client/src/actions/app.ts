@@ -43,7 +43,7 @@ export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch =
 };
 
 const loadPage: ActionCreator<ThunkResult> = (page: string) => async dispatch => {
-  if (page === 'catalogue') {
+  if (/catalogue\/?/.test(page)) {
       page = 'catalogue';
       import('../components/pages/catalogue');
       dispatch(updatePage(page, null));
