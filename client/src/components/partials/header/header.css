@@ -115,9 +115,11 @@ app-header {
 }
 
 .drawer-list ul.catalogue {
-  --app-drawer-background-color: var(--color-brand);
-  --app-drawer-selected-color: rgba(0,0,0,0.8);
-  background: var(--app-drawer-background-color);
+  border-top: 1px solid var(--app-drawer-text-color);
+}
+
+.drawer-list ul.catalogue ul {
+  border: none;
 }
 
 .drawer-list ul,
