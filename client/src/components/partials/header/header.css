@@ -44,12 +44,31 @@ app-header {
 }
 
 .toolbar-list ul {
+  position: relative;
   padding-left: 0;
   padding-right: 0;
 }
 
 .toolbar-list li, ul {
   display: inline-block;
+}
+
+.toolbar-list ul ul {
+  position: absolute;
+  top: 100%;
+  display: none;
+  flex-direction: column;
+  text-align: left;
+  background: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.toolbar-list ul ul a[selected] {
+  border-bottom: none;
+}
+
+.toolbar-list ul li:hover ul {
+  display: flex;
 }
 
 .toolbar-list a[selected] {
