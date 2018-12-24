@@ -1,4 +1,4 @@
-import {html, property} from '@polymer/lit-element';
+import {property, html} from '@polymer/lit-element';
 import {connect} from 'pwa-helpers/connect-mixin';
 
 import {Page as PageModel} from 'headless-poc-server/dist/types';
@@ -6,6 +6,7 @@ import {Page as PageModel} from 'headless-poc-server/dist/types';
 import '../../components/content/content';
 import {store, RootState} from '../../store';
 import {PageViewElement} from '../shared/page-view-element';
+import {renderContentItem} from '../../components/content/content';
 
 class Page extends connect(store)(PageViewElement) {
   @property({type: Object})
@@ -14,9 +15,7 @@ class Page extends connect(store)(PageViewElement) {
   protected render() {
     const content = this._pageData && this._pageData.content || [];
 
-    return html`
-      ${content.map(item => html`<sif-content .item="${item}"></sif-content>`)}
-    `;
+    return html`${content.map(item => renderContentItem(item))}`;
   }
 
   stateChanged(state: RootState) {

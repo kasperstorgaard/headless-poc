@@ -18,6 +18,10 @@ class Promo extends LitElement {
     <link rel="stylesheet" href="/static/blocks/section.css">
     <link rel="stylesheet" href="/static/blocks/button.css">
     <style>
+      :host {
+        display: block;
+      }
+
       section {
         min-height: 26em;
         text-align: center;

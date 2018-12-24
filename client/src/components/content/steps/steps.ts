@@ -19,6 +19,10 @@ class Steps extends LitElement {
     <link rel="stylesheet" href="/static/blocks/button.css">
     <link rel="stylesheet" href="/static/blocks/steps-list.css">
     <style>
+      :host {
+        display: block;
+      }
+
       .step {
         display: flex;
         align-items: center;
