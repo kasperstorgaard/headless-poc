@@ -14,7 +14,6 @@ class Main extends connect(store)(LitElement) {
     return html`
     <link rel="stylesheet" href="static/components/partials/main/main.css">
 
-
     <!-- Main content -->
     <main role="main" class="main-content">
       <sif-page class="page" ?active="${pageActive}"></sif-page>
