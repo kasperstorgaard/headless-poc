@@ -3,10 +3,10 @@ import {connect} from 'pwa-helpers/connect-mixin';
 
 import {store} from '../../../../store';
 
-class BlocksDemo extends connect(store)(LitElement) {
+class ElementsDemo extends connect(store)(LitElement) {
   protected render() {
-    return html`blocks`;
+    return html`elements`;
   }
 }
 
-window.customElements.define('sif-blocks-demo', BlocksDemo);
+window.customElements.define('sif-elements-demo', ElementsDemo);

@@ -1,6 +1,6 @@
 import {Nav} from 'headless-poc-server/dist/types';
 
-const names = ['Foundation', 'Blocks', 'Form Controls', 'Structural'];
+const names = ['Foundation', 'Elements', 'Form Controls', 'Structural'];
 
 export function getCatalogueNav() {
   return generateRoute('Catalogue', names.map(name => generateRoute(name)))
