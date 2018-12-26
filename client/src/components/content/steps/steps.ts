@@ -15,9 +15,9 @@ class Steps extends LitElement {
 
     return html`
     <link rel="stylesheet" href="/static/styles/reset.css">
-    <link rel="stylesheet" href="/static/blocks/section.css">
-    <link rel="stylesheet" href="/static/blocks/button.css">
-    <link rel="stylesheet" href="/static/blocks/steps-list.css">
+    <link rel="stylesheet" href="/static/elements/section.css">
+    <link rel="stylesheet" href="/static/elements/button.css">
+    <link rel="stylesheet" href="/static/elements/steps-list.css">
     <style>
       :host {
         display: block;

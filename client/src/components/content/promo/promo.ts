@@ -15,8 +15,8 @@ class Promo extends LitElement {
 
     return html`
     <link rel="stylesheet" href="/static/styles/typography.css">
-    <link rel="stylesheet" href="/static/blocks/section.css">
-    <link rel="stylesheet" href="/static/blocks/button.css">
+    <link rel="stylesheet" href="/static/elements/section.css">
+    <link rel="stylesheet" href="/static/elements/button.css">
     <style>
       :host {
         display: block;

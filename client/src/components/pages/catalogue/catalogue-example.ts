@@ -7,7 +7,7 @@ class CatalogueExample extends LitElement {
   protected render() {
     const id = this.name ? this.name.replace(/\s/g, '-') : Math.random();
     return html`
-      <link rel="stylesheet" href="static/blocks/section.css"></link>
+      <link rel="stylesheet" href="static/elements/section.css"></link>
       <style>
         :host {
           display: block;
