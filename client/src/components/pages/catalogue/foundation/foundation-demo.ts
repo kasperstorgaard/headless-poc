@@ -13,6 +13,8 @@ class FoundationDemo extends connect(store)(LitElement) {
     </style>
     <section class="sif-examples sif-section">
       <h2>Foundation</h2>
+      <p>The foundation contains the basis for the UI of the application.</p>
+      <p>It should give an introduction to the available colors, fonts etc. that can be used. Foundation contains the basis for the design of the application.</p>
       <div class="sif-example">
         <h3>Colors</h3>
         <p>colors description</p>

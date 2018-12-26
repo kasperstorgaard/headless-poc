@@ -102,20 +102,16 @@ app-header {
   margin: 0;
 }
 
+.drawer-list ul ul a {
+  padding-left: 36px;
+}
+
 .drawer-list li:first-child {
   padding-top: 4px;
 }
 
 .drawer-list li:last-child {
   padding-bottom: 4px;
-}
-
-.drawer-list ul ul li {
-  padding-left: 12px;
-}
-
-.drawer-list ul.catalogue {
-  border-top: 1px solid var(--app-drawer-text-color);
 }
 
 .drawer-list ul.catalogue ul {
@@ -137,7 +133,11 @@ app-header {
 }
 
 .drawer-list a[selected] {
-  color: var(--app-drawer-selected-color);
+  background: rgba(0,0,0,0.25);
+}
+
+.drawer-list a[selected] + ul {
+  background: rgba(0,0,0,0.25);
 }
 
 /* Wide layout: when the viewport width is bigger than 460px, layout

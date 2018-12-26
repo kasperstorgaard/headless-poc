@@ -4,6 +4,10 @@
   padding: 2em 1.5em;
 }
 
+.sif-section + .sif-section {
+  padding-top: 0;
+}
+
 .sif-section-headline,
 .sif-section > h1,
 .sif-section > h2,

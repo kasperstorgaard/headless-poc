@@ -12,8 +12,12 @@ class ElementsDemo extends connect(store)(LitElement) {
     <style>
       :host { display: block; }
     </style>
-    <section class="sif-section sif-examples">
+    <section class="sif-section">
       <h2>Elements</h2>
+      <p>
+        Elements are simple, self-contained, and can be reused all over the application.<br />
+        Their properties and classes control how they look, and they have very little state or complex ui.
+      </p>
       <h3>Buttons</h3>
       <div class="sif-example">
         <p>regular button</p>
