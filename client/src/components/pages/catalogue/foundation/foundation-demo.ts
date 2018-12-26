@@ -6,8 +6,8 @@ import {store} from '../../../../store';
 class FoundationDemo extends connect(store)(LitElement) {
   protected render() {
     return html`
-    <link rel="stylesheet" href="static/components/pages/catalogue/catalogue-styles.css"></link>
-    <link rel="stylesheet" href="static/elements/section.css"></link>
+    <link rel="stylesheet" href="static/components/pages/catalogue/catalogue-styles.css">
+    <link rel="stylesheet" href="static/elements/section.css">
     <style>
       :host { display: block; }
     </style>
