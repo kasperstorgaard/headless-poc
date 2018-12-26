@@ -4,7 +4,7 @@ import {connect} from 'pwa-helpers/connect-mixin';
 import './foundation/foundation-demo';
 import './elements/elements-demo';
 import './form-controls/form-controls-demo';
-import './structural/structural-demo';
+import './structure/structure-demo';
 
 import {store, RootState} from '../../../store';
 import {PageViewElement} from '../../shared/page-view-element';
@@ -32,7 +32,7 @@ function renderCatalogueElement(category: string) {
     case 'foundation': return html`<sif-foundation-demo></sif-foundation-demo>`;
     case 'elements': return html`<sif-elements-demo></sif-elements-demo>`;
     case 'form-controls': return html`<sif-form-controls-demo></sif-form-controls-demo>`;
-    case 'structural': return html`<sif-structural-demo></sif-structural-demo>`;
+    case 'structure': return html`<sif-structure-demo></sif-structure-demo>`;
     default: return html``;
   }
 }

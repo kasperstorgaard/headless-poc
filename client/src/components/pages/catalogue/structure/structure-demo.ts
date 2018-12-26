@@ -3,7 +3,7 @@ import {connect} from 'pwa-helpers/connect-mixin';
 
 import {store} from '../../../../store';
 
-class StructuralDemo extends connect(store)(LitElement) {
+class StructureDemo extends connect(store)(LitElement) {
   protected render() {
     return html`
     <link rel="stylesheet" href="static/components/pages/catalogue/catalogue-styles.css">
@@ -26,4 +26,4 @@ class StructuralDemo extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define('sif-structural-demo', StructuralDemo);
+window.customElements.define('sif-structure-demo', StructureDemo);
