@@ -1,4 +1,9 @@
 :root {
   --color-brand: #3fa435;
-  --color-light: white;
+  --color-error: #ff5e5b;
+  --color-warning: #ffe066;
+  --color-info: #b8d8d8;
+  --color-success: #89b6a5;
+  --color-light: #ffffff;
+  --color-background: #e8e8e3;
 }
