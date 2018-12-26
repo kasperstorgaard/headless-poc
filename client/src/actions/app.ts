@@ -25,7 +25,7 @@ export type AppAction = AppActionUpdatePage | AppActionUpdateOffline | AppAction
 
 type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
-export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch) => {
+export const navigate: ActionCreator<ThunkResult> = (path: string, hash: string) => (dispatch) => {
   // Any other info you might want to extract from the path (like page type),
   // you can do here
   const pathName = path === '/' || !path ? 'home' : path.replace(/(^\/|\/$)/g, '');
@@ -33,6 +33,13 @@ export const navigate: ActionCreator<ThunkResult> = (path: string) => (dispatch)
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
   dispatch(updateDrawerState(false));
+
+  if (hash) {
+    const targetElement = document.getElementById(hash);
+    if (targetElement) {
+      targetElement.scrollIntoView();
+    }
+  }
 };
 
 export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch => {

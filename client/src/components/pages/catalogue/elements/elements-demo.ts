@@ -11,8 +11,7 @@ class ElementsDemo extends connect(store)(LitElement) {
     <style>
       :host { display: block; }
     </style>
-    <sif-catalogue-example category="elements">
-      <h2 slot="header">button</h2>
+    <sif-catalogue-example name="buttons">
       <p>button description stuff</p>
     </sif-catalogue-example>
     `;

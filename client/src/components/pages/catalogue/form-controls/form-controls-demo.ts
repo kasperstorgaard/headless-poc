@@ -11,7 +11,7 @@ class FormControlsDemo extends connect(store)(LitElement) {
     <style>
       :host { display: block; }
     </style>
-    <sif-catalogue-example category="form-controls">
+    <sif-catalogue-example name="form-controls">
       <h2 slot="header">input</h2>
       <p>input description stuff</p>
     </sif-catalogue-example>

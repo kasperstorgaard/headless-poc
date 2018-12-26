@@ -2,9 +2,10 @@ import {LitElement, property, html} from '@polymer/lit-element';
 
 class CatalogueExample extends LitElement {
   @property({type: String})
-  category: string;
+  name: string;
 
   protected render() {
+    const id = this.name ? this.name.replace(/\s/g, '-') : Math.random();
     return html`
       <link rel="stylesheet" href="static/blocks/section.css"></link>
       <style>
@@ -13,9 +14,7 @@ class CatalogueExample extends LitElement {
         }
       </style>
       <section class="sif-section">
-        <div class="header">
-          <slot name="header"></slot>
-        </div>
+        <h2 id="${id}">${this.name}</h2>
         <div class="body">
           <slot></slot>
         </div>

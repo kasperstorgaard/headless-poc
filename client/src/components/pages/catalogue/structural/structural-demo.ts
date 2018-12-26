@@ -11,12 +11,10 @@ class StructuralDemo extends connect(store)(LitElement) {
     <style>
       :host { display: block; }
     </style>
-    <sif-catalogue-example category="structural">
-      <h2 slot="header">sections</h2>
+    <sif-catalogue-example name="sections">
       <p>sections text</p>
     </sif-catalogue-example>
-    <sif-catalogue-example category="structural">
-      <h2 slot="header">navigation</h2>
+    <sif-catalogue-example name="navigation">
       <p>navitation description</p>
     </sif-catalogue-example>
     `;

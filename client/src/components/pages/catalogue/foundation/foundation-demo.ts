@@ -11,9 +11,20 @@ class FoundationDemo extends connect(store)(LitElement) {
     <style>
       :host { display: block; }
     </style>
-    <sif-catalogue-example category="foundation">
-      <h2 slot="header">colors</h2>
+    <sif-catalogue-example name="colors">
       <p>colors description</p>
+    </sif-catalogue-example>
+    <sif-catalogue-example name="spacing">
+      <p>spacing stuffs</p>
+    </sif-catalogue-example>
+    <sif-catalogue-example name="typography">
+      <p>typography text </p>
+    </sif-catalogue-example>
+    <sif-catalogue-example name="imagery">
+      <p>typography text </p>
+    </sif-catalogue-example>
+    <sif-catalogue-example name="tone of voice">
+      <p>typography text </p>
     </sif-catalogue-example>
     `;
   }

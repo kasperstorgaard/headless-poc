@@ -47,7 +47,11 @@ class App extends connect(store)(LitElement) {
   }
 
   protected firstUpdated() {
-    installRouter((location) => store.dispatch(navigate(decodeURIComponent(location.pathname))));
+    installRouter((location) => {
+      const pathname = decodeURIComponent(location.pathname);
+      const hash = decodeURIComponent(location.hash).slice(1);
+      store.dispatch(navigate(pathname, hash));
+    });
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,
         () => store.dispatch(updateDrawerState(false)));
