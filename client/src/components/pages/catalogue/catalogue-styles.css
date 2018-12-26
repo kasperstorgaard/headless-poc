@@ -1,4 +1,12 @@
-sif-catalogue-example +
-sif-catalogue-example {
+.sif-examples +
+.sif-examples {
   border-top: 1px solid rgba(0,0,0,0.4);
+}
+
+.sif-example {
+  margin-bottom: var(--spacing-l);
+}
+
+.sif-example-description {
+  font-style: italic;
 }

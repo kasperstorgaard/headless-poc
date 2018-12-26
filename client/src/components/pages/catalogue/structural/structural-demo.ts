@@ -1,22 +1,27 @@
 import {LitElement, html} from '@polymer/lit-element';
 import {connect} from 'pwa-helpers/connect-mixin';
 
-import '../catalogue-example';
 import {store} from '../../../../store';
 
 class StructuralDemo extends connect(store)(LitElement) {
   protected render() {
     return html`
     <link rel="stylesheet" href="static/components/pages/catalogue/catalogue-styles.css"></link>
+    <link rel="stylesheet" href="static/elements/section.css"></link>
     <style>
       :host { display: block; }
     </style>
-    <sif-catalogue-example name="sections">
-      <p>sections text</p>
-    </sif-catalogue-example>
-    <sif-catalogue-example name="navigation">
-      <p>navitation description</p>
-    </sif-catalogue-example>
+    <section class="sif-section sif-examples">
+      <h2>Structure</h2>
+      <h3>Sections</h2>
+      <div class="sif-example">
+        <p>sections text</p>
+      </div>
+      <h3>navigation</h2>
+      <div class="sif-example">
+        <p>navigation description</p>
+      </div>
+    </section>
     `;
   }
 }
