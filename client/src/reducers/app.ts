@@ -7,12 +7,14 @@ import {
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
   UPDATE_DRAWER_STATE,
-  UPDATE_NAVIGATION
+  UPDATE_NAVIGATION,
+  UPDATE_PATH
 } from '../actions/app';
 import {RootAction} from '../store';
 
 export interface AppState {
   pathName: string;
+  hash: string;
   page: string;
   pageData: any;
   navigation: NavItem[];
@@ -22,8 +24,9 @@ export interface AppState {
 }
 
 const INITIAL_STATE: AppState = {
-  page: '',
   pathName: '',
+  hash: '',
+  page: '',
   pageData: {},
   navigation: [],
   offline: false,
@@ -37,8 +40,14 @@ const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action: any) 
       return {
         ...state,
         page: action.page,
-        pathName: action.pathName,
         pageData: action.data
+      };
+    case UPDATE_PATH:
+      return {
+        ...state,
+        page: action.page,
+        pathName: action.pathName,
+        hash: action.hash
       };
     case UPDATE_NAVIGATION:
       return {

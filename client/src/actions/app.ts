@@ -8,6 +8,7 @@ declare const process: any;
 import {RootState} from '../store';
 import {getCatalogueNav} from '../services/catalogue-service';
 export const UPDATE_PAGE = 'UPDATE_PAGE';
+export const UPDATE_PATH = 'UPDATE_PATH';
 export const UPDATE_NAVIGATION = 'UPDATE_NAVIGATION';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
@@ -15,13 +16,14 @@ export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
 export interface AppActionUpdatePage extends Action<'UPDATE_PAGE'> {page: string};
+export interface AppActionUpdatePath extends Action<'UPDATE_PATH'> {pathName: string, hash: string};
 export interface AppActionUpdateOffline extends Action<'UPDATE_OFFLINE'> {offline: boolean};
 export interface AppActionUpdateDrawerState extends Action<'UPDATE_DRAWER_STATE'> {opened: boolean};
 export interface AppActionOpenSnackbar extends Action<'OPEN_SNACKBAR'> {};
 export interface AppActionCloseSnackbar extends Action<'CLOSE_SNACKBAR'> {};
 export interface AppActionUpdateNavigation extends Action<'UPDATE_NAVIGATION'> {};
 export type AppAction = AppActionUpdatePage | AppActionUpdateOffline | AppActionUpdateDrawerState |
-  AppActionOpenSnackbar | AppActionCloseSnackbar | AppActionUpdateNavigation;
+  AppActionOpenSnackbar | AppActionCloseSnackbar | AppActionUpdateNavigation | AppActionUpdatePath;
 
 type ThunkResult = ThunkAction<void, RootState, undefined, AppAction>;
 
@@ -30,16 +32,10 @@ export const navigate: ActionCreator<ThunkResult> = (path: string, hash: string)
   // you can do here
   const pathName = path === '/' || !path ? 'home' : path.replace(/(^\/|\/$)/g, '');
   dispatch(loadPage(pathName));
+  dispatch(updatePath(pathName, hash));
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
   dispatch(updateDrawerState(false));
-
-  if (hash) {
-    const targetElement = document.getElementById(hash);
-    if (targetElement) {
-      targetElement.scrollIntoView();
-    }
-  }
 };
 
 export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch => {
@@ -61,7 +57,7 @@ export const loadNavigation: ActionCreator<ThunkResult> = () => async dispatch =
 const loadPage: ActionCreator<ThunkResult> = (pathName: string) => async dispatch => {
   if (/catalogue\/?/.test(pathName)) {
       import('../components/pages/catalogue/catalogue');
-      dispatch(updatePage('catalogue', pathName, null));
+      dispatch(updatePage('catalogue', null));
       return;
   }
 
@@ -71,10 +67,10 @@ const loadPage: ActionCreator<ThunkResult> = (pathName: string) => async dispatc
   try {
     const response = await pageResponse;
     const data: NavItem = await response.json();
-    dispatch(updatePage(data.name, pathName, data));
+    dispatch(updatePage(data.name, data));
   } catch(error) {
     import('../components/pages/page-404');
-    dispatch(updatePage('404', '404', null));
+    dispatch(updatePage('404', null));
   }
 };
 
@@ -85,12 +81,19 @@ const updateNavigation: ActionCreator<AppActionUpdateNavigation> = (routes: NavI
   };
 };
 
-const updatePage: ActionCreator<AppActionUpdatePage> = (page: string, pathName: string, data: any) => {
+const updatePage: ActionCreator<AppActionUpdatePage> = (page: string, data: any) => {
   return {
     type: UPDATE_PAGE,
     page,
-    pathName,
     data
+  };
+};
+
+const updatePath: ActionCreator<AppActionUpdatePath> = (pathName: string, hash: string) => {
+  return {
+    type: UPDATE_PATH,
+    pathName,
+    hash
   };
 };
 
