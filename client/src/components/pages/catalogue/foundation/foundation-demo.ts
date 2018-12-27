@@ -43,7 +43,7 @@ class FoundationDemo extends connect(store)(LitElement) {
           .background { background: var(--color-background); }
         </style>
         <h3>Colors</h3>
-        <p>colors description</p>
+        <p>These are the available colors throughout the application.</p>
         <ul class="colors">
           <li class="color brand">brand</li>
           <li class="color error">error</li>
@@ -55,8 +55,39 @@ class FoundationDemo extends connect(store)(LitElement) {
         </ul>
       </div>
       <div class="sif-example">
+        <style>
+          :host { display: block; }
+          .spacings, .spacing {
+            padding: 0;
+            margin: 0;
+          }
+          .spacings {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-column-gap: 12px;
+            grid-row-gap: 12px;
+          }
+          .spacing {
+            text-align: center;
+            line-height: 2em;
+            list-style-type: none;
+            border: 1px solid black;
+          }
+          .spacing div {
+            background: var(--color-background);
+          }
+        </style>
         <h3>Spacing</h3>
-        <p>spacing stuffs</p>
+        <p>For consistency, all the margings, paddings etc. should be based on these spacing values.</p>
+        <p>They are using a t-shirt scale from xs to xxl</p>
+        <ul class="spacings">
+          <li class="spacing" style="padding: var(--spacing-xs)"><div>xs</div></li>
+          <li class="spacing" style="padding: var(--spacing-s)"><div>s</div></li>
+          <li class="spacing" style="padding: var(--spacing-m)"><div>m</div></li>
+          <li class="spacing" style="padding: var(--spacing-l)"><div>l</div></li>
+          <li class="spacing" style="padding: var(--spacing-xl)"><div>xl</div></li>
+          <li class="spacing" style="padding: var(--spacing-xxl)"><div>xxl</div></li>
+        </ul>
       </div>
       <div class="sif-example">
         <h3>Typography</h3>
