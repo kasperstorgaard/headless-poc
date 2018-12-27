@@ -15,7 +15,10 @@ class Page extends connect(store)(PageViewElement) {
   protected render() {
     const content = this._pageData && this._pageData.content || [];
 
-    return html`${content.map(item => renderContentItem(item))}`;
+    return html`
+    ${super.render()}
+    ${content.map(item => renderContentItem(item))}
+    `;
   }
 
   stateChanged(state: RootState) {

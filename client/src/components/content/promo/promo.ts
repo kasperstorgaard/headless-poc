@@ -14,11 +14,24 @@ class Promo extends LitElement {
     }
 
     return html`
-    <link rel="stylesheet" href="/static/styles/typography.css">
-    <link rel="stylesheet" href="/static/elements/section.css">
-    <link rel="stylesheet" href="/static/elements/button.css">
-    <link rel="stylesheet" href="/static/components/content/promo/promo.css">
+    <link rel="stylesheet" href="static/shared-styles.css">
+    <link rel="stylesheet" href="static/shared-elements.css">
     <style>
+      :host {
+        display: block;
+      }
+
+      section {
+        min-height: 37em;
+        text-align: center;
+        align-items: center;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .headline, .body, .cta {
+        max-width: 270px;
+      }
     </style>
     <section class="sif-section theme-${this.theme}" style="background-image: url(${this.item.backgroundImage})">
       <h1 class="sif-section-headline headline">${this.item.headline}</h1>

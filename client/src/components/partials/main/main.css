@@ -8,15 +8,6 @@ main {
   min-height: 100vh;
 }
 
-.page {
-  display: none;
-}
-
-.page[active] {
-  display: block;
-}
-
-
 /* Wide layout: when the viewport width is bigger than 460px, layout
 changes to a wide layout. */
 @media (min-width: 460px) {

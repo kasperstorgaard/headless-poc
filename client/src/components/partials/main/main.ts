@@ -8,7 +8,9 @@ import {store, RootState} from '../../../store';
 
 class Main extends connect(store)(LitElement) {
   protected render() {
-    const pageActive = !['404', 'catalogue'].includes(this._page);
+    const notFound = this._page === '404';
+    const catalogueActive = /catalogue\/?/.test(this._pathName);
+    const pageActive = !notFound && !catalogueActive;
 
     // Anything that's related to rendering should be done in here.
     return html`
@@ -16,11 +18,11 @@ class Main extends connect(store)(LitElement) {
 
     <!-- Main content -->
     <main role="main" class="main-content">
-      <sif-page class="page" ?active="${pageActive}"></sif-page>
+      <sif-page ?active="${pageActive}"></sif-page>
       ${process.env.NODE_ENV === 'development' ?
-      html`<sif-catalogue class="page" ?active="${/catalogue\/?/.test(this._pathName)}"></sif-catalogue>` :
+      html`<sif-catalogue ?active="${catalogueActive}"></sif-catalogue>` :
       html ``}
-      <sif-page404 class="page" ?active="${this._page === '404'}"></sif-page404>
+      <sif-page404 ?active="${notFound}"></sif-page404>
     </main>`;
   }
 

@@ -1,23 +1,33 @@
-import {LitElement, html} from '@polymer/lit-element';
+import {html} from '@polymer/lit-element';
 import {connect} from 'pwa-helpers/connect-mixin';
 
-import {store} from '../../../../store';
+import {store, RootState} from '../../../../store';
+import {PageViewElement} from '../../../shared/page-view-element';
 
-class StructureDemo extends connect(store)(LitElement) {
+class StructureDemo extends connect(store)(PageViewElement) {
+  stateChanged(state: RootState) {
+    super.hashUpdated(state.app!.hash);
+  }
+
   protected render() {
     return html`
+    ${super.render()}
     <link rel="stylesheet" href="static/components/pages/catalogue/catalogue-styles.css">
     <link rel="stylesheet" href="static/elements/section.css">
     <style>
       :host { display: block; }
     </style>
-    <section class="sif-section sif-examples">
+    <section class="sif-section" id="introduction">
       <h2>Structure</h2>
       <p>The structure components, gives other components a UI container, a behavior or decides how they interact in a flow (clicking one will show the other, etc.)</p>
-      <h3>Sections</h2>
+    </section>
+    <section class="sif-section" id="sections">
+      <h3>Sections</h3>
       <div class="sif-example">
         <p>sections text</p>
       </div>
+    </section>
+    <section class="sif-section" id="navigation">
       <h3>navigation</h2>
       <div class="sif-example">
         <p>navigation description</p>
