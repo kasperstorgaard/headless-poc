@@ -19,7 +19,7 @@ class StructureDemo extends connect(store)(PageViewElement) {
     </style>
     <section class="sif-section" id="introduction">
       <h2>Structure</h2>
-      <p>The structure components, gives other components a UI container, a behavior or decides how they interact in a flow (clicking one will show the other, etc.)</p>
+      <p>The structure components give other components a UI container, a behavior or a flow (clicking one will show the other, etc.)</p>
     </section>
     <section class="sif-section" id="sections">
       <h3>Sections</h3>
