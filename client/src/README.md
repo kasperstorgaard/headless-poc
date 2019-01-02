@@ -2,14 +2,14 @@
 
 ## Dogmas ##
 - No style can be page specific (eg. readmore.css)
-- Divide everything into smaller style chunks/blocks like section.css using BEM
+- Divide everything into smaller style chunks/blocks/components
 - Style concepts must avoid html contracts, except theme context.
 
 ## New feature decision tree ##
 - Does it already exist in a similar shape on another page
-  - Yes -> Adapt to use existing style block
+  - Yes -> Adapt to use existing style/component
   - No -> Is it simple and styling focused?
-    - Yes -> Can you lift it to a semantic simple style concept?
+    - Yes -> Can you lift it to a generic app-wide style concept?
       - yes -> A
       - no -> C
     - No -> Does it contain html restrictions, complex behavior, data constracts?
