@@ -5,6 +5,5 @@ export interface Promo extends Model {
   cta: CTA;
   backgroundImage: string;
   headline: string;
-  name: string;
   body: string;
 }

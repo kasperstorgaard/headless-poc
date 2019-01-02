@@ -44,9 +44,6 @@ export abstract class MetadataItem extends ContentItem {
         if (fieldName === 'metadata__meta_title') {
           return 'metadataMetaTitle';
         }
-        if (fieldName === 'metadata__twitter_site') {
-          return 'metadataTwitterSite';
-        }
         return fieldName;
       })
     });

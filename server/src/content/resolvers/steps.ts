@@ -12,14 +12,14 @@ export class StepsItem extends CTAItem
 
   name: Fields.TextField;
   headline: Fields.TextField;
-  steps: StepItem[];
+  items: StepItem[];
 
   constructor() {
     super((fieldName: string) => {
-      if (fieldName === 'cta_link') {
+      if (fieldName === 'cta__link') {
         return 'ctaLink';
       }
-      if (fieldName === 'cta_text') {
+      if (fieldName === 'cta__text') {
         return 'ctaText';
       }
       return fieldName;
@@ -33,8 +33,7 @@ export class StepsItem extends CTAItem
       ...base,
       type: 'steps',
       headline: getText(this.headline),
-      name: getText(this.name),
-      steps: this.steps.map(step => step.toModel())
+      items: this.items.map(item => item.toModel())
     }
   }
 }

@@ -17,8 +17,7 @@ export class PageItem extends MetadataItem
     return {
       ...base,
       type: 'page',
-      content: (this.content || []).map(content => content.toModel()),
-      headline: getText(this.headline)
+      content: (this.content || []).map(content => content.toModel())
     };
   }
 }

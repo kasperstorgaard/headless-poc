@@ -11,7 +11,6 @@ export class PromoItem extends CTAItem
 
   public backgroundImage: Fields.AssetsField;
   public headline: Fields.TextField;
-  public name: Fields.TextField;
   public body: Fields.TextField;
 
   constructor() {
@@ -37,7 +36,6 @@ export class PromoItem extends CTAItem
       type: 'promo',
       backgroundImage: getImageUrl(this.backgroundImage),
       headline: getText(this.headline),
-      name: getText(this.name),
       body: getText(this.body)
     };
   }

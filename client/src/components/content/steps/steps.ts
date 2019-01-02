@@ -64,7 +64,7 @@ class Steps extends LitElement {
     </style>
     <section class="sif-section theme-${this.theme}">
       <ul class="list">
-        ${this.item.steps.map(step => html`
+        ${this.item.items.map(step => html`
         <li class="step">
           <img class="illustration" src="${step.illustrationThumbnail}">
           <div>

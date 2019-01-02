@@ -12,11 +12,11 @@ export abstract class CTAItem extends ContentItem {
   constructor(resolver: (fieldName: string) => string) {
     super({
       propertyResolver: ((fieldName: string) => {
-        if (fieldName === 'cta__cta_target') {
+        if (fieldName === 'cta__target') {
           return 'ctaCtaTarget';
         }
-        if (fieldName === 'cta__cta_title') {
-          return 'ctaCtaTitle';
+        if (fieldName === 'cta__text') {
+          return 'ctaCtaText';
         }
         return resolver(fieldName);
       })
