@@ -1,4 +1,4 @@
 export interface CTA {
-  title: string;
+  text: string;
   url: string;
 }

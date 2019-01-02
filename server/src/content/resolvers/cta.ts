@@ -6,17 +6,17 @@ import {getUrlSync} from '../../api/navigation';
 import {getText} from './utils';
 
 export abstract class CTAItem extends ContentItem {
-  ctaCtaTarget: RouteItem[];
-  ctaCtaTitle: Fields.TextField;
+  ctaTarget: RouteItem[];
+  ctaText: Fields.TextField;
 
   constructor(resolver: (fieldName: string) => string) {
     super({
       propertyResolver: ((fieldName: string) => {
         if (fieldName === 'cta__target') {
-          return 'ctaCtaTarget';
+          return 'ctaTarget';
         }
         if (fieldName === 'cta__text') {
-          return 'ctaCtaText';
+          return 'ctaText';
         }
         return resolver(fieldName);
       })
@@ -24,12 +24,12 @@ export abstract class CTAItem extends ContentItem {
   }
 
   toModel() {
-    const target = this.ctaCtaTarget && this.ctaCtaTarget[0];
+    const target = this.ctaTarget && this.ctaTarget[0];
     const url = target ? getUrlSync(target.system.codename, target.system.language) : '';
 
     return {
       cta: {
-        title: getText(this.ctaCtaTitle),
+        text: getText(this.ctaText),
         url
       } as CTA
     }

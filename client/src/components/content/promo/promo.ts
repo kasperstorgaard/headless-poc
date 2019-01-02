@@ -36,7 +36,7 @@ class Promo extends LitElement {
     <section class="sif-section theme-${this.theme}" style="background-image: url(${this.item.backgroundImage})">
       <h1 class="sif-section-headline headline">${this.item.headline}</h1>
       <p class="body">${this.item.body}</p>
-      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.title}</a>
+      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.text}</a>
     </section>`;
   }
 }

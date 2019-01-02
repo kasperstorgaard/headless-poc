@@ -21,8 +21,8 @@ export class PromoItem extends CTAItem
       if (fieldName === 'cta_text') {
         return 'ctaText';
       }
-      if (fieldName === 'cta_link') {
-        return 'ctaLink';
+      if (fieldName === 'cta__target') {
+        return 'ctaTarget';
       }
       return fieldName;
     })

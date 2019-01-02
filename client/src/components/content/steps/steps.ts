@@ -74,7 +74,7 @@ class Steps extends LitElement {
         </li>
         `)}
       </ul>
-      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.title}</a>
+      <a class="cta sif-button" href="${this.item.cta.url}">${this.item.cta.text}</a>
     </section>`;
   }
 }
