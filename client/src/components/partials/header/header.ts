@@ -18,7 +18,7 @@ import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 // import 'headless-poc-server/dist/types/index';
 
 import {store, RootState} from '../../../store';
-import {updateDrawerState} from '../../../actions/app';
+import {updateDrawerState} from '../../../actions';
 
 import {menuIcon} from '../../shared/icons';
 
@@ -72,7 +72,7 @@ class Header extends connect(store)(LitElement) {
 
   stateChanged(state: RootState) {
     this._pathName = state.app!.pathName;
-    this._navigation = state.app!.navigation;
+    this._navigation = state.app!.navItems;
     this._drawerOpened = state.app!.drawerOpened;
   }
 }

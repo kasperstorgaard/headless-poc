@@ -18,8 +18,8 @@ import {
   navigate,
   updateOffline,
   updateDrawerState,
-  loadNavigation
-} from '../actions/app';
+  loadNavItems
+} from '../actions';
 
 class App extends connect(store)(LitElement) {
   protected render() {
@@ -55,7 +55,7 @@ class App extends connect(store)(LitElement) {
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,
         () => store.dispatch(updateDrawerState(false)));
-    store.dispatch(loadNavigation());
+    store.dispatch(loadNavItems());
   }
 
   protected updated(changedProps: PropertyValues) {

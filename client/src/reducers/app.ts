@@ -7,9 +7,9 @@ import {
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
   UPDATE_DRAWER_STATE,
-  UPDATE_NAVIGATION,
+  UPDATE_NAV_ITEMS,
   UPDATE_PATH
-} from '../actions/app';
+} from '../actions';
 import {RootAction} from '../store';
 
 export interface AppState {
@@ -17,7 +17,7 @@ export interface AppState {
   hash: string;
   page: string;
   pageData: any;
-  navigation: NavItem[];
+  navItems: NavItem[];
   offline: boolean;
   drawerOpened: boolean;
   snackbarOpened: boolean;
@@ -28,7 +28,7 @@ const INITIAL_STATE: AppState = {
   hash: '',
   page: '',
   pageData: {},
-  navigation: [],
+  navItems: [],
   offline: false,
   drawerOpened: false,
   snackbarOpened: false,
@@ -49,10 +49,10 @@ const app: Reducer<AppState, RootAction> = (state = INITIAL_STATE, action: any) 
         pathName: action.pathName,
         hash: action.hash
       };
-    case UPDATE_NAVIGATION:
+    case UPDATE_NAV_ITEMS:
       return {
         ...state,
-        navigation: action.data
+        navItems: action.data
       };
     case UPDATE_OFFLINE:
       return {
