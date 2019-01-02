@@ -91,6 +91,9 @@ function renderRoute (pathName: string, item: NavItem, recursive = true): Templa
 function renderRoutes (page: string, items: NavItem[]): TemplateResult {
   if (items && items.length) {
     const groupLookup = items.reduce((acc, item) => {
+      if (item.hideFromMenu) {
+        return acc;
+      }
       const key = item.group || '';
       acc[key] = acc[key] || {name: key, items: []};
       acc[key].items.push(item);
