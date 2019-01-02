@@ -33,6 +33,12 @@ class StructureDemo extends connect(store)(PageViewElement) {
         <p>navigation description</p>
       </div>
     </section>
+    <section class="sif-section" id="cards">
+      <h3>cards</h2>
+      <div class="sif-example">
+        <p>cards description</p>
+      </div>
+    </section>
     `;
   }
 }
