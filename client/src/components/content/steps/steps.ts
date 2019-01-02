@@ -17,10 +17,24 @@ class Steps extends LitElement {
     <link rel="stylesheet" href="/static/styles/reset.css">
     <link rel="stylesheet" href="/static/elements/section.css">
     <link rel="stylesheet" href="/static/elements/button.css">
-    <link rel="stylesheet" href="/static/elements/steps-list.css">
     <style>
       :host {
         display: block;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media(min-width: 768px) {
+        section {
+          max-width: var(--size-xl);
+        }
+
+        .list {
+          flex-direction: row;
+        }
       }
 
       .step {

@@ -6,7 +6,7 @@
 }
 
 .sif-hero > * {
-  max-width: 270px;
+  max-width: var(--size-m);
 }
 
 .sif-hero-headline {

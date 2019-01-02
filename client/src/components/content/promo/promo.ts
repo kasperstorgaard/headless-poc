@@ -30,7 +30,7 @@ class Promo extends LitElement {
       }
 
       .headline, .body, .cta {
-        max-width: 270px;
+        max-width: var(--size-m);
       }
     </style>
     <section class="sif-section theme-${this.theme}" style="background-image: url(${this.item.backgroundImage})">

@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   padding: 2em 1.5em;
+  max-width: var(--size-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sif-section + .sif-section {

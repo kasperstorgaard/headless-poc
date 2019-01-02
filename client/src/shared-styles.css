@@ -1,4 +1,6 @@
 @import './styles/reset.css';
 @import './styles/colors.css';
+@import './styles/media.css';
+@import './styles/sizes.css';
 @import './styles/spacing.css';
 @import './styles/typography.css';

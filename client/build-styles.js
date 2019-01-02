@@ -5,6 +5,7 @@ const {readFile, writeFile, exists} = require('fs');
 const mkdirp = require('mkdirp');
 const path = require('path');
 const atImport = require('postcss-import');
+const presetEnv = require('postcss-preset-env');
 const {argv} = require('yargs');
 
 const readFileAsync = promisify(readFile);
@@ -12,7 +13,11 @@ const writeFileAsync = promisify(writeFile);
 const existsAsync = promisify(exists);
 const mkdirpAsync = promisify(mkdirp);
 
-const processor = postcss().use(atImport());
+const processor = postcss()
+  .use(atImport())
+  .use(presetEnv({
+    stage: 3
+  }));
 
 const watch = argv.watch || argv.w;
 
